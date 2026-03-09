@@ -1,3 +1,9 @@
+## [1.0.2](https://github.com/kyco/vite-plugin-robots-ts/compare/v1.0.1...v1.0.2) (2026-03-09)
+
+### Bug Fixes
+
+* Plugin name, vite compatibility version ([1173ffc](https://github.com/kyco/vite-plugin-robots-ts/commit/1173ffcbafdb3bd7162eda4448119f3a13e1c20d))
+
 ## [1.0.1](https://github.com/kyco/vite-plugin-robots-ts/compare/v1.0.0...v1.0.1) (2026-03-09)
 
 ### Chore
