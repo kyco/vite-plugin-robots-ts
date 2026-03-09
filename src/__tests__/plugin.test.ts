@@ -1,7 +1,7 @@
 import { describe, expect, it, vi } from 'vitest'
 
-import { robots } from './plugin'
-import { ROBOTS_ALLOW_ALL, ROBOTS_BLOCK_AI_TRAINING, ROBOTS_BLOCK_ALL } from './utils'
+import { robots } from '../plugin'
+import { ROBOTS_ALLOW_ALL, ROBOTS_BLOCK_AI_TRAINING, ROBOTS_BLOCK_ALL } from '../utils'
 
 const mockLogger = { info: vi.fn() }
 const mockConfig = { logger: mockLogger }
