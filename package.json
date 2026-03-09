@@ -34,9 +34,13 @@
     "robots.txt",
     "typescript"
   ],
+  "homepage": "https://kyco.github.io/vite-plugin-robots-ts",
   "repository": {
     "type": "git",
-    "url": "https://github.com/kyco/vite-plugin-robots-ts"
+    "url": "git+https://github.com/kyco/vite-plugin-robots-ts.git"
+  },
+  "bugs": {
+    "url": "https://github.com/kyco/vite-plugin-robots-ts/issues"
   },
   "scripts": {
     "build": "tsup",
