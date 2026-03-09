@@ -1,3 +1,13 @@
+## [1.0.5](https://github.com/kyco/vite-plugin-robots-ts/compare/v1.0.4...v1.0.5) (2026-03-09)
+
+### Bug Fixes
+
+* Ensure separate blocks for AI blocking ([c1c7eae](https://github.com/kyco/vite-plugin-robots-ts/commit/c1c7eae338ba9815c3a0a9f871cde438763db73b))
+
+### Chore
+
+* Bump deps ([870c589](https://github.com/kyco/vite-plugin-robots-ts/commit/870c5895d8c54cb693a3320a7bdc3a5c6fe571f7))
+
 ## [1.0.4](https://github.com/kyco/vite-plugin-robots-ts/compare/v1.0.3...v1.0.4) (2026-03-09)
 
 ### Chore
