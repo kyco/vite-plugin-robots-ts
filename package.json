@@ -2,7 +2,7 @@
   "name": "vite-plugin-robots-ts",
   "version": "0.1.0",
   "description": "A Vite plugin to generate a robots.txt file. Allows AI blocking and also works in development mode.",
-  "author": "Cornelius Weidmann <cornelius@kyco.io>",
+  "author": "Cornelius Weidmann <cornelius@kyco.io> (https://kyco.io)",
   "license": "MIT",
   "type": "module",
   "sideEffects": false,
@@ -24,6 +24,9 @@
   "files": [
     "dist"
   ],
+  "publishConfig": {
+    "provenance": true
+  },
   "keywords": [
     "vite",
     "vite-plugin",
@@ -39,14 +42,16 @@
     "build": "tsup",
     "lint": "biome check .",
     "lint:fix": "biome check --write .",
-    "prepublishOnly": "tsup"
+    "test": "echo \"This project does not have any tests which can be run yet...\"",
+    "prepublishOnly": "tsup",
+    "update-packages": "pnpm dlx npm-check-updates -u"
   },
   "peerDependencies": {
     "vite": ">=5.0.0"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.4.6",
-    "tsup": "^8.5.0",
+    "tsup": "^8.5.1",
     "typescript": "^5.9.3",
     "vite": "^7.3.1"
   }
