@@ -12,14 +12,13 @@ npm install -D vite-plugin-robots-ts
 
 ```ts
 // vite.config.ts
-import { defineConfig } from 'vite'
 import { robots } from 'vite-plugin-robots-ts'
 
-export default defineConfig({
+export default {
   plugins: [
     robots(), // blocks all robots by default
   ],
-})
+}
 ```
 
 ### Examples
