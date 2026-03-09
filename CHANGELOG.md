@@ -1,3 +1,9 @@
+## [1.0.3](https://github.com/kyco/vite-plugin-robots-ts/compare/v1.0.2...v1.0.3) (2026-03-09)
+
+### Chore
+
+* Add Claudia ([629bdc1](https://github.com/kyco/vite-plugin-robots-ts/commit/629bdc17c2c1b62164e92dd8a819d6297a6c44a7))
+
 ## [1.0.2](https://github.com/kyco/vite-plugin-robots-ts/compare/v1.0.1...v1.0.2) (2026-03-09)
 
 ### Bug Fixes
