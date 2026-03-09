@@ -1,3 +1,9 @@
+## [1.0.7](https://github.com/kyco/vite-plugin-robots-ts/compare/v1.0.6...v1.0.7) (2026-03-09)
+
+### Refactoring
+
+* Move file ([1acaca3](https://github.com/kyco/vite-plugin-robots-ts/commit/1acaca30cdb1145e90502a8b9d49679bb148468b))
+
 ## [1.0.6](https://github.com/kyco/vite-plugin-robots-ts/compare/v1.0.5...v1.0.6) (2026-03-09)
 
 ### Bug Fixes
