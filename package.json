@@ -52,7 +52,7 @@
   },
   "packageManager": "pnpm@10.31.0",
   "peerDependencies": {
-    "vite": ">=5.0.0"
+    "vite": ">=2.0.0"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.4.6",

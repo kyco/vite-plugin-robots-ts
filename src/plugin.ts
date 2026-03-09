@@ -41,7 +41,7 @@ export function robots(options: Options = {}): Plugin {
   }
 
   return {
-    name: 'vite-robots',
+    name: 'vite-plugin-robots-ts',
 
     apply: () => enabled,
 
