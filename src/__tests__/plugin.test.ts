@@ -6,7 +6,7 @@ import { ROBOTS_ALLOW_ALL, ROBOTS_BLOCK_AI_TRAINING, ROBOTS_BLOCK_ALL } from '..
 const mockLogger = { info: vi.fn() }
 const mockConfig = { logger: mockLogger }
 
-function getPlugin(options = {}) {
+const getPlugin = (options = {}) => {
   const plugin = robots(options) as any
   plugin.configResolved(mockConfig)
   return plugin
