@@ -1,6 +1,6 @@
 # vite-plugin-robots-ts
 
-A Vite plugin to generate a `robots.txt` file. Supports blocking AI training crawlers and also works in development mode by creating middleware to create `/robots.txt`.
+A Vite plugin to generate a `robots.txt` file. Supports blocking AI training crawlers and also works in development mode by creating middleware for `/robots.txt`.
 
 ## Installation
 
@@ -24,23 +24,52 @@ export default defineConfig({
 
 ### Examples
 
-Block only AI training crawlers:
+#### Block all (default):
 
 ```ts
-robots({
-  block: 'ai-training'
-})
+robots()
+// or
+robots({ block: 'all' })
+```
+*Output:*
+```txt
+User-agent: *
+Disallow: /
 ```
 
-Allow all robots:
+#### Allow all:
 
 ```ts
-robots({
-  block: 'none'
-})
+robots({ block: 'none' })
+```
+*Output:*
+```txt
+User-agent: *
+Disallow:
 ```
 
-Custom content using built-in presets:
+#### Block only AI training crawlers:
+
+```ts
+robots({ block: 'ai-training' })
+```
+*Output:*
+```txt
+User-agent: Amazonbot
+User-agent: Applebot-Extended
+User-agent: Bytespider
+User-agent: CCBot
+User-agent: ClaudeBot
+User-agent: Google-Extended
+User-agent: GPTBot
+User-agent: meta-externalagent
+Disallow: /
+
+User-agent: *
+Disallow:
+```
+
+#### Using built-in presets:
 
 ```ts
 import { ROBOTS_BLOCK_AI_TRAINING, ROBOTS_BLOCK_ALL, robots } from 'vite-plugin-robots-ts'
@@ -48,6 +77,26 @@ import { ROBOTS_BLOCK_AI_TRAINING, ROBOTS_BLOCK_ALL, robots } from 'vite-plugin-
 robots({
   content: process.env.NODE_ENV === 'production' ? ROBOTS_BLOCK_AI_TRAINING : ROBOTS_BLOCK_ALL,
 })
+```
+*Output (production):*
+```txt (production)
+User-agent: Amazonbot
+User-agent: Applebot-Extended
+User-agent: Bytespider
+User-agent: CCBot
+User-agent: ClaudeBot
+User-agent: Google-Extended
+User-agent: GPTBot
+User-agent: meta-externalagent
+Disallow: /
+
+User-agent: *
+Disallow:
+```
+*Output (all other environments):*
+```txt (other)
+User-agent: *
+Disallow: /
 ```
 
 ### Options
