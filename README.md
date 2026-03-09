@@ -102,6 +102,24 @@ User-agent: *
 Disallow: /
 ```
 
+### Use custom content:
+
+```ts
+robots({
+  content: `User-agent: *
+Disallow: /admin
+
+Sitemap: https://example.com/sitemap.xml`,
+})
+```
+*Output:*
+```txt
+User-agent: *
+Disallow: /admin
+
+Sitemap: https://example.com/sitemap.xml
+```
+
 ## Options
 
 All options are optional.
