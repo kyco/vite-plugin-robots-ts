@@ -6,6 +6,10 @@ A Vite plugin to generate `robots.txt`. Supports blocking AI training crawlers a
 
 ```bash
 npm install -D vite-plugin-robots-ts
+pnpm add -D vite-plugin-robots-ts
+yarn add -D vite-plugin-robots-ts
+bun add -D vite-plugin-robots-ts
+deno add -D npm:vite-plugin-robots-ts
 ```
 
 ## Usage
@@ -21,9 +25,9 @@ export default {
 }
 ```
 
-### Examples
+## Examples
 
-#### Block all (default):
+### Block all (default):
 
 ```ts
 robots()
@@ -36,7 +40,7 @@ User-agent: *
 Disallow: /
 ```
 
-#### Allow all:
+### Allow all:
 
 ```ts
 robots({ block: 'none' })
@@ -47,7 +51,7 @@ User-agent: *
 Disallow:
 ```
 
-#### Block only AI training crawlers:
+### Block only AI training crawlers:
 
 ```ts
 robots({ block: 'ai-training' })
@@ -68,7 +72,7 @@ User-agent: *
 Disallow:
 ```
 
-#### Using built-in presets:
+### Use built-in presets:
 
 ```ts
 import { ROBOTS_BLOCK_AI_TRAINING, ROBOTS_BLOCK_ALL, robots } from 'vite-plugin-robots-ts'
@@ -98,7 +102,7 @@ User-agent: *
 Disallow: /
 ```
 
-### Options
+## Options
 
 All options are optional.
 
