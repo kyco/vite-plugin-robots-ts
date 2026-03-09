@@ -102,8 +102,8 @@ Disallow: /
 
 All options are optional.
 
-| Option | Type | Default | Description |
-| --- | --- | --- | --- |
-| enabled | *boolean* | `true` | Toggle the plugin on or off |
-| block | *`'all' \| 'ai-training' \| 'none'`* | `'all'` | Control how robots are blocked |
-| content | *string* | *N/A* | Custom `robots.txt` content (overrides **block** option) |
+| Option  | Type                               | Default | Description                                              |
+|---------|------------------------------------|---------|----------------------------------------------------------|
+| enabled | *boolean*                          | `true`  | Toggle the plugin on or off                              |
+| block   | `'all' \| 'ai-training' \| 'none'` | `'all'` | Control how robots are blocked                           |
+| content | *string*                           | -   | Custom `robots.txt` content (overrides **block** option) |
