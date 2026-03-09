@@ -1,6 +1,6 @@
 # vite-plugin-robots-ts
 
-A Vite plugin to generate a `robots.txt` file. Supports blocking AI training crawlers and also works in development mode by creating middleware for `/robots.txt`.
+A Vite plugin to generate `robots.txt`. Supports blocking AI training crawlers and also works in development mode by proxying middleware to `/robots.txt`.
 
 ## Installation
 
@@ -12,14 +12,13 @@ npm install -D vite-plugin-robots-ts
 
 ```ts
 // vite.config.ts
-import { defineConfig } from 'vite'
 import { robots } from 'vite-plugin-robots-ts'
 
-export default defineConfig({
+export default {
   plugins: [
     robots(), // blocks all robots by default
   ],
-})
+}
 ```
 
 ### Examples
@@ -103,8 +102,8 @@ Disallow: /
 
 All options are optional.
 
-| Option | Type | Default | Description |
-| --- | --- | --- | --- |
-| enabled | *boolean* | `true` | Toggle the plugin on or off |
-| block | *`'all' \| 'ai-training' \| 'none'`* | `'all'` | Control how robots are blocked |
-| content | *string* | *N/A* | Custom `robots.txt` content (overrides **block** option) |
+| Option  | Type                               | Default | Description                                              |
+|---------|------------------------------------|---------|----------------------------------------------------------|
+| enabled | *boolean*                          | `true`  | Toggle the plugin on or off                              |
+| block   | `'all' \| 'ai-training' \| 'none'` | `'all'` | Control how robots are blocked                           |
+| content | *string*                           | -   | Custom `robots.txt` content (overrides **block** option) |
