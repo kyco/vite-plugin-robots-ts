@@ -46,6 +46,7 @@
     "prepublishOnly": "tsup",
     "update-packages": "pnpm dlx npm-check-updates -u"
   },
+  "packageManager": "pnpm@10.31.0",
   "peerDependencies": {
     "vite": ">=5.0.0"
   },
