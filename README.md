@@ -107,4 +107,4 @@ All options are optional.
 | --- | --- | --- | --- |
 | enabled | *boolean* | `true` | Toggle the plugin on or off |
 | block | *`'all' \| 'ai-training' \| 'none'`* | `'all'` | Control how robots are blocked |
-| content | *string* | N/A | Custom `robots.txt` content (overrides **block** option) |
+| content | *string* | *N/A* | Custom `robots.txt` content (overrides **block** option) |
