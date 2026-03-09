@@ -1,3 +1,9 @@
+## [1.0.6](https://github.com/kyco/vite-plugin-robots-ts/compare/v1.0.5...v1.0.6) (2026-03-09)
+
+### Bug Fixes
+
+* Add unit tests ([3ffc1e3](https://github.com/kyco/vite-plugin-robots-ts/commit/3ffc1e39c5e885d461134f97d72f8dc80271904b))
+
 ## [1.0.5](https://github.com/kyco/vite-plugin-robots-ts/compare/v1.0.4...v1.0.5) (2026-03-09)
 
 ### Bug Fixes
