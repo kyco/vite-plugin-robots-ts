@@ -1,6 +1,6 @@
 # vite-plugin-robots-ts
 
-A Vite plugin to generate a `robots.txt` file. Supports blocking AI training crawlers and also works in development mode by creating middleware for `/robots.txt`.
+A Vite plugin to generate `robots.txt`. Supports blocking AI training crawlers and also works in development mode by proxying middleware to `/robots.txt`.
 
 ## Installation
 
