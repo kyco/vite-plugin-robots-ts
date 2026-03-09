@@ -1,3 +1,10 @@
+## [1.0.4](https://github.com/kyco/vite-plugin-robots-ts/compare/v1.0.3...v1.0.4) (2026-03-09)
+
+### Chore
+
+* Update README ([b84a9bc](https://github.com/kyco/vite-plugin-robots-ts/commit/b84a9bc8c1ee07cf2dc935919312c794202f4508))
+* Update README ([72d3d70](https://github.com/kyco/vite-plugin-robots-ts/commit/72d3d707a777b26b051b3ea59ae24d7344beaf85))
+
 ## [1.0.3](https://github.com/kyco/vite-plugin-robots-ts/compare/v1.0.2...v1.0.3) (2026-03-09)
 
 ### Chore
