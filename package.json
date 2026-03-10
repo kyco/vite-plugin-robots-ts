@@ -34,7 +34,7 @@
     "robots.txt",
     "typescript"
   ],
-  "homepage": "https://kyco.github.io/vite-plugin-robots-ts",
+  "homepage": "https://github.com/kyco/vite-plugin-robots-ts",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/kyco/vite-plugin-robots-ts.git"
