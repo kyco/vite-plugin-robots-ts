@@ -1,3 +1,9 @@
+## [1.0.9](https://github.com/kyco/vite-plugin-robots-ts/compare/v1.0.8...v1.0.9) (2026-03-10)
+
+### Bug Fixes
+
+* Update homepage URL ([59e58c1](https://github.com/kyco/vite-plugin-robots-ts/commit/59e58c1d77c32ac4c956ba5e8deb28b5b0f762b5))
+
 ## [1.0.8](https://github.com/kyco/vite-plugin-robots-ts/compare/v1.0.7...v1.0.8) (2026-03-10)
 
 ### Bug Fixes
