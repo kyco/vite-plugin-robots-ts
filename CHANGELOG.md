@@ -1,3 +1,18 @@
+## [1.0.10](https://github.com/kyco/vite-plugin-robots-ts/compare/v1.0.9...v1.0.10) (2026-03-10)
+
+### Bug Fixes
+
+* Ensure vite gets installed as peer dependency only ([4d8181f](https://github.com/kyco/vite-plugin-robots-ts/commit/4d8181f9863735b89aeda8dbcd365cae85192251))
+* Lint ([f07a0e2](https://github.com/kyco/vite-plugin-robots-ts/commit/f07a0e2684c8dca5c10583f822de0dde350ae157))
+* Mock data ([c044bea](https://github.com/kyco/vite-plugin-robots-ts/commit/c044bea728331dfcf350e043c828046f313c8df3))
+* Update demos to point to "live" files ([4e563a1](https://github.com/kyco/vite-plugin-robots-ts/commit/4e563a14d232c89fffa4615b76cf9738f3a636a2))
+* Update log messages ([447bf84](https://github.com/kyco/vite-plugin-robots-ts/commit/447bf84e0fbf9596e124c1dd65d185722e96e9d4))
+
+### Chore
+
+* Add demos for testing ([7e0fe81](https://github.com/kyco/vite-plugin-robots-ts/commit/7e0fe81c99cf48ecf75e3887ea37dd5c7bcf9024))
+* Add missing deps ([cf1f62f](https://github.com/kyco/vite-plugin-robots-ts/commit/cf1f62f6ff5d2152a052bdabd5486142de14ecf8))
+
 ## [1.0.9](https://github.com/kyco/vite-plugin-robots-ts/compare/v1.0.8...v1.0.9) (2026-03-10)
 
 ### Bug Fixes
