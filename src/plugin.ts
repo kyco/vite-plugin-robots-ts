@@ -61,6 +61,10 @@ export function robots(options: Options = {}): Plugin {
     },
 
     generateBundle() {
+      config.logger.info(
+        `\n- ${LOGGER_CLEAR}${LOGGER_PREFIX} Writing robots.txt at ${config.build.outDir}${ROBOTS_PATH}`,
+      )
+
       try {
         this.emitFile({
           type: 'asset',
@@ -73,7 +77,7 @@ export function robots(options: Options = {}): Plugin {
       }
 
       config.logger.info(
-        `${LOGGER_CLEAR}${success ? LOGGER_SUCCESS : LOGGER_FAILURE} ${LOGGER_PREFIX} ${success ? 'Success' : `Failed creating "${ROBOTS_PATH}"`}`,
+        `${LOGGER_CLEAR}${success ? LOGGER_SUCCESS : LOGGER_FAILURE} ${LOGGER_PREFIX} ${success ? `Success` : `Failed writing robots.txt!`}`,
       )
     },
   }
