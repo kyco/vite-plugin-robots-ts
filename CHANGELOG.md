@@ -1,3 +1,13 @@
+## [1.0.8](https://github.com/kyco/vite-plugin-robots-ts/compare/v1.0.7...v1.0.8) (2026-03-10)
+
+### Bug Fixes
+
+* Update description ([084bf79](https://github.com/kyco/vite-plugin-robots-ts/commit/084bf7982c7fdc58abffaf20e9be39e717ff059a))
+
+### Refactoring
+
+* Function definition ([e45d114](https://github.com/kyco/vite-plugin-robots-ts/commit/e45d1149be0a68a3afbe1def90b53b6a5082e51d))
+
 ## [1.0.7](https://github.com/kyco/vite-plugin-robots-ts/compare/v1.0.6...v1.0.7) (2026-03-09)
 
 ### Refactoring
