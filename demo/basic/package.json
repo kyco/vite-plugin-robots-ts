@@ -1,0 +1,16 @@
+{
+  "name": "basic",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "vite-plugin-robots-ts": "workspace:*"
+  },
+  "peerDependencies": {
+    "vite": ">=2.0.0"
+  }
+}
