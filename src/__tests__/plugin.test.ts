@@ -4,7 +4,10 @@ import { robots } from '../plugin'
 import { ROBOTS_ALLOW_ALL, ROBOTS_BLOCK_AI_TRAINING, ROBOTS_BLOCK_ALL } from '../utils'
 
 const mockLogger = { info: vi.fn() }
-const mockConfig = { logger: mockLogger }
+const mockConfig = {
+  build: { outDir: 'dist' },
+  logger: mockLogger,
+}
 
 const getPlugin = (options = {}) => {
   const plugin = robots(options) as any
