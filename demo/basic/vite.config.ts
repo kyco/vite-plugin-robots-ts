@@ -1,5 +1,6 @@
 import { defineConfig } from 'vite'
-import { robots } from 'vite-plugin-robots-ts'
+
+import { robots } from '../../src/index.ts'
 
 export default defineConfig({
   plugins: [

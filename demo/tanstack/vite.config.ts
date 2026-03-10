@@ -1,8 +1,10 @@
 import { tanstackStart } from '@tanstack/react-start/plugin/vite'
 import viteReact from '@vitejs/plugin-react'
 import { defineConfig } from 'vite'
-import { robots } from 'vite-plugin-robots-ts'
 import tsConfigPaths from 'vite-tsconfig-paths'
+
+import { robots } from '../../src'
+
 export default defineConfig({
   server: {
     port: 5173,
