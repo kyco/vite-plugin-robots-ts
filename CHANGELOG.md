@@ -1,3 +1,9 @@
+## [1.1.1](https://github.com/kyco/vite-plugin-robots-ts/compare/v1.1.0...v1.1.1) (2026-03-11)
+
+### Bug Fixes
+
+* **docs:** Update example and default value ([d33de99](https://github.com/kyco/vite-plugin-robots-ts/commit/d33de99484864953f1e593bb60d0167e9a7b79c2))
+
 ## [1.1.0](https://github.com/kyco/vite-plugin-robots-ts/compare/v1.0.11...v1.1.0) (2026-03-11)
 
 ### Features
