@@ -1,7 +1,7 @@
 {
   "name": "vite-plugin-robots-ts",
   "version": "1.0.10",
-  "description": "A Vite plugin to generate robots.txt. Allows AI blocking and supports development mode.",
+  "description": "Vite plugin to generate robots.txt. Supports AI blocking and works in dev mode.",
   "author": "Cornelius Weidmann <cornelius@kyco.io> (https://kyco.io)",
   "license": "MIT",
   "type": "module",
