@@ -91,7 +91,7 @@ export type Options = {
    * Example:
    * ```typescript
    * robots({
-   *   sitemapUrl: 'https://example.com/sitemap.xml',
+   *   sitemap: 'https://example.com/sitemap.xml',
    * })
    * ```
    *
@@ -103,5 +103,5 @@ export type Options = {
    * Sitemap: https://example.com/sitemap.xml
    * ```
    */
-  sitemapUrl?: string
+  sitemap?: string
 }

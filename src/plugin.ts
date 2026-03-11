@@ -24,7 +24,7 @@ export function robots(options: Options = {}): Plugin {
   const enabled = options.enabled ?? true
   const block = options.block ?? 'all'
   const content = options.content ?? undefined
-  const sitemapUrl = options.sitemapUrl ?? ''
+  const sitemap = options.sitemap ?? ''
 
   if (content) {
     robotsContent = content
@@ -41,8 +41,8 @@ export function robots(options: Options = {}): Plugin {
     }
   }
 
-  if (sitemapUrl) {
-    robotsContent += `\n\nSitemap: ${sitemapUrl}`
+  if (sitemap) {
+    robotsContent += `\n\nSitemap: ${sitemap}`
   }
 
   return {
