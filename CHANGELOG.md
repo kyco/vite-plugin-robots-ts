@@ -1,3 +1,17 @@
+## [1.1.0](https://github.com/kyco/vite-plugin-robots-ts/compare/v1.0.11...v1.1.0) (2026-03-11)
+
+### Features
+
+* Add `sitemapUrl` option ([f52af91](https://github.com/kyco/vite-plugin-robots-ts/commit/f52af91eaeb962b4c62ae13a6a582193d95e0328))
+
+### Chore
+
+* **docs:** Update README ([fc3951b](https://github.com/kyco/vite-plugin-robots-ts/commit/fc3951b04943cc6e6da071186cf9d1dec31aa317))
+
+### Refactoring
+
+* Rename param ([47f3bc6](https://github.com/kyco/vite-plugin-robots-ts/commit/47f3bc6d1cf86fa8fefbd3b6a168bf44fa396931))
+
 ## [1.0.11](https://github.com/kyco/vite-plugin-robots-ts/compare/v1.0.10...v1.0.11) (2026-03-11)
 
 ### Bug Fixes
