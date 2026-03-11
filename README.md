@@ -148,12 +148,29 @@ Disallow: /admin
 Sitemap: https://example.com/sitemap.xml
 ```
 
+### Append sitemap directive:
+
+```ts
+robots({
+  block: 'none',
+  sitemap: 'https://example.com/sitemap.xml'
+})
+```
+*Output:*
+```txt
+User-agent: *
+Disallow:
+
+Sitemap: https://example.com/sitemap.xml
+```
+
 ## Options
 
 All options are optional.
 
-| Option  | Type                               | Default | Description                                              |
-|---------|------------------------------------|---------|----------------------------------------------------------|
-| enabled | *boolean*                          | `true`  | Toggle the plugin on or off                              |
-| block   | `'all' \| 'ai-training' \| 'none'` | `'all'` | Control how robots are blocked                           |
-| content | *string*                           | -   | Custom `robots.txt` content (overrides **block** option) |
+| Option  | Type                               | Default | Description                                                                  |
+|---------|------------------------------------|---------|------------------------------------------------------------------------------|
+| enabled | *boolean*                          | `true`  | Toggle the plugin on or off                                                  |
+| block   | `'all' \| 'ai-training' \| 'none'` | `'all'` | Control how robots are blocked                                               |
+| content | *string*                           | -       | Custom content for `robots.txt` (takes precedence over the **block** option) |
+| sitemap | *string*                           | -       | Adds a `Sitemap` directive to `robots.txt`                                   |
