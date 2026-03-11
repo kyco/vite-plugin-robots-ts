@@ -6,6 +6,7 @@ export default defineConfig({
   plugins: [
     robots({
       block: 'ai-training',
+      sitemapUrl: 'https://example.com/sitemap.xml',
     }),
   ],
 })

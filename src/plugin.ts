@@ -24,6 +24,7 @@ export function robots(options: Options = {}): Plugin {
   const enabled = options.enabled ?? true
   const block = options.block ?? 'all'
   const content = options.content ?? undefined
+  const sitemapUrl = options.sitemapUrl ?? ''
 
   if (content) {
     robotsContent = content
@@ -38,6 +39,10 @@ export function robots(options: Options = {}): Plugin {
       default:
         robotsContent = ROBOTS_BLOCK_ALL
     }
+  }
+
+  if (sitemapUrl) {
+    robotsContent += `\n\nSitemap: ${sitemapUrl}`
   }
 
   return {

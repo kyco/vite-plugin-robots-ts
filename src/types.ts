@@ -5,14 +5,15 @@ export type Options = {
    * **Default: `true`**
    */
   enabled?: boolean
+
   /**
-   * Control how robots are blocked. If the `content` option is also provided then this option will be ignored.
+   * Control how robots are blocked. When the `content` option is also provided, the `content` option will take precedence.
    *
    * **Default: `'all'`**
    *
    * ---
-   *
    * `'all'` — Block all robots:
+   *
    * ```bash
    * User-agent: *
    * Disallow: /
@@ -21,6 +22,7 @@ export type Options = {
    * ---
    *
    * `'none'` — Allow all robots:
+   *
    * ```bash
    * User-agent: *
    * Disallow:
@@ -29,6 +31,7 @@ export type Options = {
    * ---
    *
    * `'ai-training'` — Block known AI training crawlers, allow everything else:
+   *
    * ```bash
    * User-agent: Amazonbot
    * Disallow: /
@@ -59,6 +62,7 @@ export type Options = {
    * ```
    */
   block?: 'all' | 'ai-training' | 'none'
+
   /**
    * Custom content for the generated `robots.txt` file. This option always takes precedence over the `block` option.
    *
@@ -76,4 +80,28 @@ export type Options = {
    * ```
    */
   content?: string
+
+  /**
+   * Adds a `Sitemap` directive to the generated `robots.txt` file.
+   *
+   * **Default: `''`**
+   *
+   * ---
+   *
+   * Example:
+   * ```typescript
+   * robots({
+   *   sitemapUrl: 'https://example.com/sitemap.xml',
+   * })
+   * ```
+   *
+   * Output:
+   * ```bash
+   * User-agent: *
+   * Disallow: /
+   *
+   * Sitemap: https://example.com/sitemap.xml
+   * ```
+   */
+  sitemapUrl?: string
 }
