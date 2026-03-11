@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "update-packages": "pnpm dlx npm-check-updates -u"
   },
   "dependencies": {
     "vite-plugin-robots-ts": "workspace:*"
