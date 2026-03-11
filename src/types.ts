@@ -84,13 +84,14 @@ export type Options = {
   /**
    * Adds a `Sitemap` directive to the generated `robots.txt` file.
    *
-   * **Default: `''`**
+   * **Default: `undefined`**
    *
    * ---
    *
    * Example:
    * ```typescript
    * robots({
+   *   block: 'none',
    *   sitemap: 'https://example.com/sitemap.xml',
    * })
    * ```
@@ -98,7 +99,7 @@ export type Options = {
    * Output:
    * ```bash
    * User-agent: *
-   * Disallow: /
+   * Disallow:
    *
    * Sitemap: https://example.com/sitemap.xml
    * ```
