@@ -55,7 +55,7 @@
     "demo:tanstack:dev": "pnpm --filter tanstack dev",
     "demo:tanstack:build": "pnpm --filter tanstack build",
     "demo:tanstack:preview": "pnpm --filter tanstack preview",
-    "update-packages": "pnpm dlx npm-check-updates -u"
+    "update-packages": "pnpm dlx npm-check-updates --format group -i"
   },
   "packageManager": "pnpm@10.32.1",
   "peerDependencies": {
@@ -72,6 +72,6 @@
     "tsup": "^8.5.1",
     "typescript": "^5.9.3",
     "vite": "^7.3.1",
-    "vitest": "^4.0.18"
+    "vitest": "^4.1.0"
   }
 }
