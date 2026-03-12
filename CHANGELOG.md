@@ -1,3 +1,15 @@
+## [1.1.2](https://github.com/kyco/vite-plugin-robots-ts/compare/v1.1.1...v1.1.2) (2026-03-12)
+
+### Bug Fixes
+
+* **docs:** Typo ([da7a2bc](https://github.com/kyco/vite-plugin-robots-ts/commit/da7a2bc40984ed797a8e57f347531c0b12e6d7b3))
+
+### Chore
+
+* Bump deps ([5baed74](https://github.com/kyco/vite-plugin-robots-ts/commit/5baed74f3704fe107ca45fcd254fd660f742eb67))
+* **demo:** Bump deps ([9132c98](https://github.com/kyco/vite-plugin-robots-ts/commit/9132c9803bb183350f0295ac23cff380971b74c7))
+* Update peer dep version ([933a354](https://github.com/kyco/vite-plugin-robots-ts/commit/933a3540682df114264c0df2d51e83f7bc8d285f))
+
 ## [1.1.1](https://github.com/kyco/vite-plugin-robots-ts/compare/v1.1.0...v1.1.1) (2026-03-11)
 
 ### Bug Fixes
