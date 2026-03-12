@@ -1,2 +1,2 @@
 Always use pnpm.
-Be extremely consice in all your responses.
+Be extremely concise in all your responses.
