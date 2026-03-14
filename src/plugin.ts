@@ -66,6 +66,14 @@ export function robots(options: Options = {}): Plugin {
     },
 
     generateBundle() {
+      /**
+       * Environment API only available since Vite v6, hence the conditional checking around it.
+       * We only want to emit the robots.txt on the client.
+       */
+      if (this.environment?.name && this.environment.name !== 'client') {
+        return
+      }
+
       config.logger.info(
         `\n- ${LOGGER_CLEAR}${LOGGER_PREFIX} Writing robots.txt at ${config.build.outDir}${ROBOTS_PATH}`,
       )

@@ -20,7 +20,7 @@ import { robots } from 'vite-plugin-robots-ts'
 
 export default {
   plugins: [
-    robots(), // blocks all robots by default
+    robots(), // block all robots by default
   ],
 }
 ```

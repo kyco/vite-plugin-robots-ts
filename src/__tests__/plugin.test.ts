@@ -123,6 +123,25 @@ describe('+ robots()', () => {
   })
 
   describe('- hook:generateBundle()', () => {
+    it('should emit robots.txt in the client bundle only (Vite v6+)', () => {
+      const plugin = getPlugin()
+      const emitFile = vi.fn()
+
+      plugin.generateBundle.call({ emitFile, environment: { name: 'ssr' } })
+      expect(emitFile).not.toHaveBeenCalled()
+
+      plugin.generateBundle.call({ emitFile, environment: { name: 'client' } })
+      expect(emitFile).toHaveBeenCalledTimes(1)
+    })
+
+    it('should emit robots.txt when Environment API is not available (Vite pre v6)', () => {
+      const plugin = getPlugin()
+      const emitFile = vi.fn()
+
+      plugin.generateBundle.call({ emitFile })
+      expect(emitFile).toHaveBeenCalledTimes(1)
+    })
+
     it('should fail gracefully when robots.txt generation fails', () => {
       const plugin = getPlugin()
       const emitFile = vi.fn(() => {
