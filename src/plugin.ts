@@ -66,6 +66,11 @@ export function robots(options: Options = {}): Plugin {
     },
 
     generateBundle() {
+      // this.environment.name is either 'client' or 'ssr', we only want to emit the robots.txt on the client
+      if (this.environment.name !== 'client') {
+        return
+      }
+
       config.logger.info(
         `\n- ${LOGGER_CLEAR}${LOGGER_PREFIX} Writing robots.txt at ${config.build.outDir}${ROBOTS_PATH}`,
       )
