@@ -66,8 +66,11 @@ export function robots(options: Options = {}): Plugin {
     },
 
     generateBundle() {
-      // this.environment.name is either 'client' or 'ssr', we only want to emit the robots.txt on the client
-      if (this.environment.name !== 'client') {
+      /**
+       * Environment API only available since Vite v6, hence the conditional checking around it.
+       * We only want to emit the robots.txt on the client.
+       */
+      if (this.environment?.name && this.environment.name !== 'client') {
         return
       }
 
