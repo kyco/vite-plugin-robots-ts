@@ -1,3 +1,15 @@
+## [1.1.3](https://github.com/kyco/vite-plugin-robots-ts/compare/v1.1.2...v1.1.3) (2026-03-14)
+
+### Bug Fixes
+
+* Ensure backwards compatibility ([9368531](https://github.com/kyco/vite-plugin-robots-ts/commit/93685316cf052c68849b6108af2fdd79ccc63a91))
+* Only emit file on client ([4ee4a8c](https://github.com/kyco/vite-plugin-robots-ts/commit/4ee4a8c439f9557cc94ba8bb935a434ef0004f47))
+
+### Chore
+
+* Add unit tests ([3905b00](https://github.com/kyco/vite-plugin-robots-ts/commit/3905b00825e5e25fe4594c5872402100a8a2c608))
+* **docs:** Update README ([63ef0f7](https://github.com/kyco/vite-plugin-robots-ts/commit/63ef0f77042dfd581cd862918f95105d0357c7d7))
+
 ## [1.1.2](https://github.com/kyco/vite-plugin-robots-ts/compare/v1.1.1...v1.1.2) (2026-03-12)
 
 ### Bug Fixes
