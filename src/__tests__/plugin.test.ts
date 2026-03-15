@@ -142,13 +142,13 @@ describe('+ robots()', () => {
       expect(emitFile).toHaveBeenCalledTimes(1)
     })
 
-    it('should fail gracefully when robots.txt generation fails', () => {
+    it('should throw when robots.txt generation fails', () => {
       const plugin = getPlugin()
       const emitFile = vi.fn(() => {
         throw new Error('fail')
       })
 
-      expect(() => plugin.generateBundle.call({ emitFile })).not.toThrow()
+      expect(() => plugin.generateBundle.call({ emitFile })).toThrow()
     })
   })
 })

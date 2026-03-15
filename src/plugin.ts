@@ -3,7 +3,6 @@ import type { Plugin, ResolvedConfig } from 'vite'
 import type { Options } from './types'
 import {
   LOGGER_CLEAR,
-  LOGGER_FAILURE,
   LOGGER_PREFIX,
   LOGGER_SUCCESS,
   logColor,
@@ -18,7 +17,6 @@ const ROBOTS_PATH = `${BASE_PATH}${FILE_NAME}`
 
 export function robots(options: Options = {}): Plugin {
   let config: ResolvedConfig
-  let success = false
   let robotsContent = ''
 
   const enabled = options.enabled ?? true
@@ -84,14 +82,10 @@ export function robots(options: Options = {}): Plugin {
           fileName: FILE_NAME,
           source: robotsContent,
         })
-        success = true
-      } catch (_err) {
-        success = false
+        config.logger.info(`${LOGGER_CLEAR}${LOGGER_SUCCESS} ${LOGGER_PREFIX} Success`)
+      } catch (err) {
+        throw new Error(`Failed to write robots.txt! ${err instanceof Error ? err.message : String(err)}`)
       }
-
-      config.logger.info(
-        `${LOGGER_CLEAR}${success ? LOGGER_SUCCESS : LOGGER_FAILURE} ${LOGGER_PREFIX} ${success ? `Success` : `Failed writing robots.txt!`}`,
-      )
     },
   }
 }
