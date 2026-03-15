@@ -1,10 +1,19 @@
+import { mkdirSync, writeFileSync } from 'node:fs'
+import { resolve } from 'node:path'
+
 import { describe, expect, it, vi } from 'vitest'
 
 import { robots } from '../plugin'
 import { ROBOTS_ALLOW_ALL, ROBOTS_BLOCK_AI_TRAINING, ROBOTS_BLOCK_ALL } from '../utils'
 
+vi.mock('node:fs', () => ({
+  mkdirSync: vi.fn(),
+  writeFileSync: vi.fn(),
+}))
+
 const mockLogger = { info: vi.fn() }
 const mockConfig = {
+  root: '/project',
   build: { outDir: 'dist' },
   logger: mockLogger,
 }
@@ -72,6 +81,49 @@ describe('+ robots()', () => {
       })
     })
 
+    describe('- `outDir`', () => {
+      it('should write robots.txt to the custom outDir', () => {
+        const plugin = getPlugin({ outDir: 'custom-out' })
+        const emitFile = vi.fn()
+        plugin.generateBundle.call({ emitFile })
+
+        expect(emitFile).not.toHaveBeenCalled()
+        expect(mkdirSync).toHaveBeenCalledWith(resolve('/project', 'custom-out'), { recursive: true })
+        expect(writeFileSync).toHaveBeenCalledWith(resolve('/project', 'custom-out', 'robots.txt'), ROBOTS_BLOCK_ALL)
+      })
+
+      it('should resolve absolute outDir paths relative to project root', () => {
+        vi.mocked(mkdirSync).mockClear()
+        const plugin = getPlugin({ outDir: '/bano' })
+        const emitFile = vi.fn()
+        plugin.generateBundle.call({ emitFile })
+
+        expect(mkdirSync).toHaveBeenCalledWith(resolve('/project', 'bano'), { recursive: true })
+      })
+
+      it('should write custom content to custom outDir', () => {
+        vi.mocked(writeFileSync).mockClear()
+        const custom = 'User-agent: *\nAllow: /\n'
+        const plugin = getPlugin({ outDir: 'custom-out', content: custom })
+        const emitFile = vi.fn()
+        plugin.generateBundle.call({ emitFile })
+
+        expect(emitFile).not.toHaveBeenCalled()
+        expect(writeFileSync).toHaveBeenCalledWith(resolve('/project', 'custom-out', 'robots.txt'), custom)
+      })
+
+      it('should throw when writing to custom outDir fails', () => {
+        vi.mocked(mkdirSync).mockImplementationOnce(() => {
+          throw new Error('permission denied')
+        })
+
+        const plugin = getPlugin({ outDir: 'custom-out' })
+        const emitFile = vi.fn()
+
+        expect(() => plugin.generateBundle.call({ emitFile })).toThrow('Failed to write robots.txt!')
+      })
+    })
+
     describe('- `content`', () => {
       it('should return user provided content', () => {
         const custom = 'User-agent: *\nAllow: /public\nDisallow: /private\n'
@@ -93,6 +145,41 @@ describe('+ robots()', () => {
         plugin.generateBundle.call({ emitFile })
 
         expect(emitFile).toHaveBeenCalledWith(expect.objectContaining({ source: custom }))
+      })
+    })
+
+    describe('- `sitemap`', () => {
+      it('should append sitemap directive to default content', () => {
+        const plugin = getPlugin({ sitemap: 'https://example.com/sitemap.xml' })
+        const emitFile = vi.fn()
+        plugin.generateBundle.call({ emitFile })
+
+        expect(emitFile).toHaveBeenCalledWith(
+          expect.objectContaining({
+            source: `${ROBOTS_BLOCK_ALL}\n\nSitemap: https://example.com/sitemap.xml`,
+          }),
+        )
+      })
+
+      it('should append sitemap directive to custom content', () => {
+        const custom = 'User-agent: *\nAllow: /\n'
+        const plugin = getPlugin({ content: custom, sitemap: 'https://example.com/sitemap.xml' })
+        const emitFile = vi.fn()
+        plugin.generateBundle.call({ emitFile })
+
+        expect(emitFile).toHaveBeenCalledWith(
+          expect.objectContaining({
+            source: `${custom}\n\nSitemap: https://example.com/sitemap.xml`,
+          }),
+        )
+      })
+
+      it('should not append sitemap directive when sitemap is empty', () => {
+        const plugin = getPlugin({ block: 'none', sitemap: '' })
+        const emitFile = vi.fn()
+        plugin.generateBundle.call({ emitFile })
+
+        expect(emitFile).toHaveBeenCalledWith(expect.objectContaining({ source: ROBOTS_ALLOW_ALL }))
       })
     })
   })
@@ -132,6 +219,26 @@ describe('+ robots()', () => {
 
       plugin.generateBundle.call({ emitFile, environment: { name: 'client' } })
       expect(emitFile).toHaveBeenCalledTimes(1)
+    })
+
+    it('should skip emit when environment mode is dev (Vite v6+)', () => {
+      const plugin = getPlugin()
+      const emitFile = vi.fn()
+
+      plugin.generateBundle.call({ emitFile, environment: { name: 'client', mode: 'dev' } })
+      expect(emitFile).not.toHaveBeenCalled()
+    })
+
+    it('should rewrite /server outDir to /client for SSR builds', () => {
+      const plugin = robots() as any
+      plugin.configResolved({
+        ...mockConfig,
+        build: { outDir: 'dist/server' },
+      })
+      const emitFile = vi.fn()
+      plugin.generateBundle.call({ emitFile })
+
+      expect(mockLogger.info).toHaveBeenCalledWith(expect.stringContaining('dist/client'))
     })
 
     it('should emit robots.txt when Environment API is not available (Vite pre v6)', () => {

@@ -105,4 +105,23 @@ export type Options = {
    * ```
    */
   sitemap?: string
+
+  /**
+   * Custom output directory for the generated `robots.txt` file. When specified, the file is
+   * written to this directory instead of the default Vite build output directory.
+   *
+   * The path is resolved relative to the Vite project root.
+   *
+   * **Default: `undefined`** (uses Vite's `build.outDir`)
+   *
+   * ---
+   *
+   * Example:
+   * ```typescript
+   * robots({
+   *   outDir: 'public',
+   * })
+   * ```
+   */
+  outDir?: string
 }

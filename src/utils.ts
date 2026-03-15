@@ -1,3 +1,5 @@
+import type { ResolvedConfig } from 'vite'
+
 export const ROBOTS_ALLOW_ALL = `User-agent: *
 Disallow:
 `
@@ -48,3 +50,15 @@ export const LOGGER_CLEAR = '\x1b[0m'
 export const LOGGER_PREFIX = logColor('yellow', '[robots-ts]', true)
 export const LOGGER_SUCCESS = logColor('green', '✓', true)
 export const LOGGER_FAILURE = logColor('red', '✗', true)
+
+export const logStart = (config: ResolvedConfig, path: string) => {
+  config.logger.info(`\n${LOGGER_CLEAR}- ${LOGGER_PREFIX} Writing robots.txt at ${path}`)
+}
+
+export const logSuccess = (config: ResolvedConfig) => {
+  config.logger.info(`${LOGGER_CLEAR}${LOGGER_SUCCESS} ${LOGGER_PREFIX} Success`)
+}
+
+export const getErrorMsg = (err: unknown) => {
+  return `Failed to write robots.txt! ${err instanceof Error ? err.message : String(err)}`
+}
