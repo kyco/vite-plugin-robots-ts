@@ -1,3 +1,9 @@
+## [1.2.0](https://github.com/kyco/vite-plugin-robots-ts/compare/v1.1.4...v1.2.0) (2026-03-15)
+
+### Features
+
+* Add `outDir` option ([d27ba79](https://github.com/kyco/vite-plugin-robots-ts/commit/d27ba79d8f53725bf9560b74d60a6ee36561b45d))
+
 ## [1.1.4](https://github.com/kyco/vite-plugin-robots-ts/compare/v1.1.3...v1.1.4) (2026-03-15)
 
 ### Bug Fixes
