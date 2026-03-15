@@ -1,3 +1,15 @@
+## [1.1.4](https://github.com/kyco/vite-plugin-robots-ts/compare/v1.1.3...v1.1.4) (2026-03-15)
+
+### Bug Fixes
+
+* Throw when robots fails writing ([dad4a91](https://github.com/kyco/vite-plugin-robots-ts/commit/dad4a919ffc5814a2eece6bb00d0b7cc30d86637))
+
+### Chore
+
+* Bump dev deps ([a30c9a9](https://github.com/kyco/vite-plugin-robots-ts/commit/a30c9a927c10469b700ae87b8b8ca6840d8d47ba))
+* **maintenance:** Add clean command ([3eabb18](https://github.com/kyco/vite-plugin-robots-ts/commit/3eabb18e74ac8ce553768fd69dd97df8e7fbe4e3))
+* Update biome rules ([245a1b5](https://github.com/kyco/vite-plugin-robots-ts/commit/245a1b526e0dcd94d6caba4a74721cca0578a570))
+
 ## [1.1.3](https://github.com/kyco/vite-plugin-robots-ts/compare/v1.1.2...v1.1.3) (2026-03-14)
 
 ### Bug Fixes
