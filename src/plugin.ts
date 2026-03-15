@@ -1,11 +1,17 @@
+import { mkdirSync, writeFileSync } from 'node:fs'
+import { resolve } from 'node:path'
+
 import type { Plugin, ResolvedConfig } from 'vite'
 
 import type { Options } from './types'
 import {
+  getErrorMsg,
   LOGGER_CLEAR,
   LOGGER_PREFIX,
   LOGGER_SUCCESS,
   logColor,
+  logStart,
+  logSuccess,
   ROBOTS_ALLOW_ALL,
   ROBOTS_BLOCK_AI_TRAINING,
   ROBOTS_BLOCK_ALL,
@@ -23,6 +29,7 @@ export function robots(options: Options = {}): Plugin {
   const block = options.block ?? 'all'
   const content = options.content ?? undefined
   const sitemap = options.sitemap ?? ''
+  const customOutDir = options.outDir ?? undefined
 
   if (content) {
     robotsContent = content
@@ -61,20 +68,49 @@ export function robots(options: Options = {}): Plugin {
       config.logger.info(
         `${LOGGER_CLEAR}${LOGGER_SUCCESS} ${LOGGER_PREFIX} Exposed new route: ${logColor('green', ROBOTS_PATH)}`,
       )
+
+      if (customOutDir) {
+        config.logger.info(
+          `${LOGGER_CLEAR}- ${LOGGER_PREFIX} Custom outDir "${customOutDir}" will be used during build`,
+        )
+      }
     },
 
     generateBundle() {
       /**
        * Environment API only available since Vite v6, hence the conditional checking around it.
-       * We only want to emit the robots.txt on the client.
+       * We only want to create robots.txt on the client and only when running a build,
+       * if no custom outDir is defined that is.
        */
-      if (this.environment?.name && this.environment.name !== 'client') {
+      if (this.environment) {
+        if (this.environment.name !== 'client' || this.environment.mode === 'dev') {
+          return
+        }
+      }
+
+      if (customOutDir) {
+        const normalisedOutDir = customOutDir.replace(/^\/+/, '')
+        const resolvedOutDir = resolve(config.root, normalisedOutDir)
+
+        logStart(config, `${resolvedOutDir}${ROBOTS_PATH}`)
+
+        try {
+          mkdirSync(resolvedOutDir, { recursive: true })
+          writeFileSync(resolve(resolvedOutDir, FILE_NAME), robotsContent)
+          logSuccess(config)
+        } catch (err) {
+          throw new Error(getErrorMsg(err))
+        }
+
         return
       }
 
-      config.logger.info(
-        `\n- ${LOGGER_CLEAR}${LOGGER_PREFIX} Writing robots.txt at ${config.build.outDir}${ROBOTS_PATH}`,
-      )
+      const normalisedOutDir = config.build.outDir.endsWith('/server')
+        ? config.build.outDir.replace(/\/server$/, '/client')
+        : config.build.outDir
+      const resolvedOutDir = resolve(config.root, normalisedOutDir)
+
+      logStart(config, `${resolvedOutDir}${ROBOTS_PATH}`)
 
       try {
         this.emitFile({
@@ -82,9 +118,9 @@ export function robots(options: Options = {}): Plugin {
           fileName: FILE_NAME,
           source: robotsContent,
         })
-        config.logger.info(`${LOGGER_CLEAR}${LOGGER_SUCCESS} ${LOGGER_PREFIX} Success`)
+        logSuccess(config)
       } catch (err) {
-        throw new Error(`Failed to write robots.txt! ${err instanceof Error ? err.message : String(err)}`)
+        throw new Error(getErrorMsg(err))
       }
     },
   }

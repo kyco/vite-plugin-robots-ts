@@ -174,3 +174,4 @@ All options are optional.
 | block   | `'all' \| 'ai-training' \| 'none'` | `'all'` | Control how robots are blocked                                               |
 | content | *string*                           | -       | Custom content for `robots.txt` (takes precedence over the **block** option) |
 | sitemap | *string*                           | -       | Adds a `Sitemap` directive to `robots.txt`                                   |
+| outDir  | *string*                           | -       | Custom output directory for `robots.txt` (resolved relative to project root) |
