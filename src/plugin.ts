@@ -1,5 +1,5 @@
 import { mkdirSync, writeFileSync } from 'node:fs'
-import { resolve } from 'node:path'
+import { join, resolve } from 'node:path'
 
 import type { Plugin, ResolvedConfig } from 'vite'
 
@@ -71,7 +71,7 @@ export function robots(options: Options = {}): Plugin {
 
       if (customOutDir) {
         config.logger.info(
-          `${LOGGER_CLEAR}- ${LOGGER_PREFIX} Custom outDir "${customOutDir}" will be used during build`,
+          `${LOGGER_CLEAR}- ${LOGGER_PREFIX} Custom outDir: ${logColor('green', customOutDir)} (will be used during build)`,
         )
       }
     },
@@ -89,14 +89,16 @@ export function robots(options: Options = {}): Plugin {
       }
 
       if (customOutDir) {
-        const normalisedOutDir = customOutDir.replace(/^\/+/, '')
-        const resolvedOutDir = resolve(config.root, normalisedOutDir)
-
-        logStart(config, `${resolvedOutDir}${ROBOTS_PATH}`)
-
         try {
+          const normalisedOutDir = customOutDir.replace(/^\/+/, '')
+          const resolvedOutDir = resolve(config.root, normalisedOutDir)
+          const filePath = join(resolvedOutDir, FILE_NAME)
+
+          logStart(config, filePath)
+
           mkdirSync(resolvedOutDir, { recursive: true })
-          writeFileSync(resolve(resolvedOutDir, FILE_NAME), robotsContent)
+          writeFileSync(filePath, robotsContent)
+
           logSuccess(config)
         } catch (err) {
           throw new Error(getErrorMsg(err))
@@ -105,19 +107,21 @@ export function robots(options: Options = {}): Plugin {
         return
       }
 
-      const normalisedOutDir = config.build.outDir.endsWith('/server')
-        ? config.build.outDir.replace(/\/server$/, '/client')
-        : config.build.outDir
-      const resolvedOutDir = resolve(config.root, normalisedOutDir)
-
-      logStart(config, `${resolvedOutDir}${ROBOTS_PATH}`)
-
       try {
+        const normalisedOutDir = config.build.outDir.endsWith('/server')
+          ? config.build.outDir.replace(/\/server$/, '/client')
+          : config.build.outDir
+        const resolvedOutDir = resolve(config.root, normalisedOutDir)
+        const filePath = join(resolvedOutDir, FILE_NAME)
+
+        logStart(config, filePath)
+
         this.emitFile({
           type: 'asset',
           fileName: FILE_NAME,
           source: robotsContent,
         })
+
         logSuccess(config)
       } catch (err) {
         throw new Error(getErrorMsg(err))
