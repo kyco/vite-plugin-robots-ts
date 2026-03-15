@@ -79,8 +79,7 @@ export function robots(options: Options = {}): Plugin {
     generateBundle() {
       /**
        * Environment API only available since Vite v6, hence the conditional checking around it.
-       * We only want to create robots.txt on the client and only when running a build,
-       * if no custom outDir is defined that is.
+       * We only want to create robots.txt on the client and only when running a build.
        */
       if (this.environment) {
         if (this.environment.name !== 'client' || this.environment.mode === 'dev') {
