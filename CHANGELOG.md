@@ -1,3 +1,9 @@
+## [1.2.2](https://github.com/kyco/vite-plugin-robots-ts/compare/v1.2.1...v1.2.2) (2026-03-18)
+
+### Chore
+
+* Bump deps ([ec0f4f9](https://github.com/kyco/vite-plugin-robots-ts/commit/ec0f4f946b8a597dc8b81ebc3d42c2cd7530109b))
+
 ## [1.2.1](https://github.com/kyco/vite-plugin-robots-ts/compare/v1.2.0...v1.2.1) (2026-03-15)
 
 ### Bug Fixes
