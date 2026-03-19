@@ -1,3 +1,13 @@
+## [2.1.0](https://github.com/kyco/vite-plugin-robots-ts/compare/v2.0.3...v2.1.0) (2026-03-19)
+
+### Features
+
+* Allow multiple sitemap directives ([216d863](https://github.com/kyco/vite-plugin-robots-ts/commit/216d86301945762a3f0369943f36b9984780a4e5))
+
+### Bug Fixes
+
+* Tests ([111385e](https://github.com/kyco/vite-plugin-robots-ts/commit/111385ea0a12a2677d3e93ee76033d5fbb99e610))
+
 ## [2.0.3](https://github.com/kyco/vite-plugin-robots-ts/compare/v2.0.2...v2.0.3) (2026-03-19)
 
 ### Docs
