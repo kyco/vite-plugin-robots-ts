@@ -265,4 +265,38 @@ describe('+ robots()', () => {
       expect(() => plugin.generateBundle.call({ emitFile })).toThrow('Failed to write robots.txt! fail')
     })
   })
+
+  describe('- exported constants', () => {
+    it('should export ROBOTS_ALLOW_ALL with "allow all" policy', () => {
+      expect(ROBOTS_ALLOW_ALL).toContain('User-agent: *\nDisallow:\n')
+    })
+
+    it('should export ROBOTS_BLOCK_ALL with "block all" policy', () => {
+      expect(ROBOTS_BLOCK_ALL).toContain('User-agent: *\nDisallow: /\n')
+    })
+
+    it('should export ROBOTS_BLOCK_AI_TRAINING without "allow all" policy', () => {
+      expect(ROBOTS_BLOCK_AI_TRAINING).toContain('User-agent: Amazonbot')
+      expect(ROBOTS_BLOCK_AI_TRAINING).toContain('User-agent: Applebot-Extended')
+      expect(ROBOTS_BLOCK_AI_TRAINING).toContain('User-agent: Bytespider')
+      expect(ROBOTS_BLOCK_AI_TRAINING).toContain('User-agent: CCBot')
+      expect(ROBOTS_BLOCK_AI_TRAINING).toContain('User-agent: ClaudeBot')
+      expect(ROBOTS_BLOCK_AI_TRAINING).toContain('User-agent: Google-Extended')
+      expect(ROBOTS_BLOCK_AI_TRAINING).toContain('User-agent: GPTBot')
+      expect(ROBOTS_BLOCK_AI_TRAINING).toContain('User-agent: meta-externalagent')
+      expect(ROBOTS_BLOCK_AI_TRAINING).not.toContain('User-agent: *\nDisallow:\n')
+    })
+
+    it('should export ROBOTS_BLOCK_AI_TRAINING_ALLOW_ALL with "allow all" policy', () => {
+      expect(ROBOTS_BLOCK_AI_TRAINING_ALLOW_ALL).toContain('User-agent: Amazonbot')
+      expect(ROBOTS_BLOCK_AI_TRAINING_ALLOW_ALL).toContain('User-agent: Applebot-Extended')
+      expect(ROBOTS_BLOCK_AI_TRAINING_ALLOW_ALL).toContain('User-agent: Bytespider')
+      expect(ROBOTS_BLOCK_AI_TRAINING_ALLOW_ALL).toContain('User-agent: CCBot')
+      expect(ROBOTS_BLOCK_AI_TRAINING_ALLOW_ALL).toContain('User-agent: ClaudeBot')
+      expect(ROBOTS_BLOCK_AI_TRAINING_ALLOW_ALL).toContain('User-agent: Google-Extended')
+      expect(ROBOTS_BLOCK_AI_TRAINING_ALLOW_ALL).toContain('User-agent: GPTBot')
+      expect(ROBOTS_BLOCK_AI_TRAINING_ALLOW_ALL).toContain('User-agent: meta-externalagent')
+      expect(ROBOTS_BLOCK_AI_TRAINING_ALLOW_ALL).toContain('User-agent: *\nDisallow:')
+    })
+  })
 })
