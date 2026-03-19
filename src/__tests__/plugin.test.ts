@@ -4,7 +4,12 @@ import { resolve } from 'node:path'
 import { describe, expect, it, vi } from 'vitest'
 
 import { robots } from '../plugin'
-import { ROBOTS_ALLOW_ALL, ROBOTS_BLOCK_AI_TRAINING, ROBOTS_BLOCK_ALL } from '../utils'
+import {
+  ROBOTS_ALLOW_ALL,
+  ROBOTS_BLOCK_AI_TRAINING,
+  ROBOTS_BLOCK_AI_TRAINING_ALLOW_ALL,
+  ROBOTS_BLOCK_ALL,
+} from '../utils'
 
 vi.mock('node:fs', () => ({
   mkdirSync: vi.fn(),
@@ -76,7 +81,7 @@ describe('+ robots()', () => {
         expect(emitFile).toHaveBeenCalledWith({
           type: 'asset',
           fileName: 'robots.txt',
-          source: ROBOTS_BLOCK_AI_TRAINING,
+          source: ROBOTS_BLOCK_AI_TRAINING_ALLOW_ALL,
         })
       })
     })
@@ -88,7 +93,9 @@ describe('+ robots()', () => {
         plugin.generateBundle.call({ emitFile })
 
         expect(emitFile).not.toHaveBeenCalled()
-        expect(mkdirSync).toHaveBeenCalledWith(resolve('/project', 'custom-out'), { recursive: true })
+        expect(mkdirSync).toHaveBeenCalledWith(resolve('/project', 'custom-out'), {
+          recursive: true,
+        })
         expect(writeFileSync).toHaveBeenCalledWith(resolve('/project', 'custom-out', 'robots.txt'), ROBOTS_BLOCK_ALL)
       })
 
@@ -112,7 +119,7 @@ describe('+ robots()', () => {
         expect(writeFileSync).toHaveBeenCalledWith(resolve('/project', 'custom-out', 'robots.txt'), custom)
       })
 
-      it('should throw when writing to custom outDir fails', () => {
+      it('should throw when mkdirSync fails', () => {
         vi.mocked(mkdirSync).mockImplementationOnce(() => {
           throw new Error('permission denied')
         })
@@ -255,7 +262,41 @@ describe('+ robots()', () => {
         throw new Error('fail')
       })
 
-      expect(() => plugin.generateBundle.call({ emitFile })).toThrow()
+      expect(() => plugin.generateBundle.call({ emitFile })).toThrow('Failed to write robots.txt! fail')
+    })
+  })
+
+  describe('- exported constants', () => {
+    it('should export ROBOTS_ALLOW_ALL with "allow all" policy', () => {
+      expect(ROBOTS_ALLOW_ALL).toContain('User-agent: *\nDisallow:\n')
+    })
+
+    it('should export ROBOTS_BLOCK_ALL with "block all" policy', () => {
+      expect(ROBOTS_BLOCK_ALL).toContain('User-agent: *\nDisallow: /\n')
+    })
+
+    it('should export ROBOTS_BLOCK_AI_TRAINING without "allow all" policy', () => {
+      expect(ROBOTS_BLOCK_AI_TRAINING).toContain('User-agent: Amazonbot')
+      expect(ROBOTS_BLOCK_AI_TRAINING).toContain('User-agent: Applebot-Extended')
+      expect(ROBOTS_BLOCK_AI_TRAINING).toContain('User-agent: Bytespider')
+      expect(ROBOTS_BLOCK_AI_TRAINING).toContain('User-agent: CCBot')
+      expect(ROBOTS_BLOCK_AI_TRAINING).toContain('User-agent: ClaudeBot')
+      expect(ROBOTS_BLOCK_AI_TRAINING).toContain('User-agent: Google-Extended')
+      expect(ROBOTS_BLOCK_AI_TRAINING).toContain('User-agent: GPTBot')
+      expect(ROBOTS_BLOCK_AI_TRAINING).toContain('User-agent: meta-externalagent')
+      expect(ROBOTS_BLOCK_AI_TRAINING).not.toContain('User-agent: *\nDisallow:\n')
+    })
+
+    it('should export ROBOTS_BLOCK_AI_TRAINING_ALLOW_ALL with "allow all" policy', () => {
+      expect(ROBOTS_BLOCK_AI_TRAINING_ALLOW_ALL).toContain('User-agent: Amazonbot')
+      expect(ROBOTS_BLOCK_AI_TRAINING_ALLOW_ALL).toContain('User-agent: Applebot-Extended')
+      expect(ROBOTS_BLOCK_AI_TRAINING_ALLOW_ALL).toContain('User-agent: Bytespider')
+      expect(ROBOTS_BLOCK_AI_TRAINING_ALLOW_ALL).toContain('User-agent: CCBot')
+      expect(ROBOTS_BLOCK_AI_TRAINING_ALLOW_ALL).toContain('User-agent: ClaudeBot')
+      expect(ROBOTS_BLOCK_AI_TRAINING_ALLOW_ALL).toContain('User-agent: Google-Extended')
+      expect(ROBOTS_BLOCK_AI_TRAINING_ALLOW_ALL).toContain('User-agent: GPTBot')
+      expect(ROBOTS_BLOCK_AI_TRAINING_ALLOW_ALL).toContain('User-agent: meta-externalagent')
+      expect(ROBOTS_BLOCK_AI_TRAINING_ALLOW_ALL).toContain('User-agent: *\nDisallow:')
     })
   })
 })

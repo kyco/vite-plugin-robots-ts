@@ -72,10 +72,13 @@ export type Options = {
    *
    * Example:
    * ```typescript
-   * import { ROBOTS_ALLOW_ALL, ROBOTS_BLOCK_ALL, ROBOTS_BLOCK_AI_TRAINING, robots } from 'vite-plugin-robots-ts'
+   * import { ROBOTS_BLOCK_AI_TRAINING_ALLOW_ALL, ROBOTS_BLOCK_ALL, robots } from 'vite-plugin-robots-ts'
    *
    * robots({
-   *   content: process.env.NODE_ENV === 'production' ? ROBOTS_BLOCK_AI_TRAINING : ROBOTS_BLOCK_ALL,
+   *   content:
+   *     process.env.NODE_ENV === 'production'
+   *       ? ROBOTS_BLOCK_AI_TRAINING_ALLOW_ALL
+   *       : ROBOTS_BLOCK_ALL,
    * })
    * ```
    */

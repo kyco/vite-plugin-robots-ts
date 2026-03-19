@@ -13,7 +13,7 @@ import {
   logStart,
   logSuccess,
   ROBOTS_ALLOW_ALL,
-  ROBOTS_BLOCK_AI_TRAINING,
+  ROBOTS_BLOCK_AI_TRAINING_ALLOW_ALL,
   ROBOTS_BLOCK_ALL,
 } from './utils'
 
@@ -36,7 +36,7 @@ export function robots(options: Options = {}): Plugin {
   } else {
     switch (block) {
       case 'ai-training':
-        robotsContent = ROBOTS_BLOCK_AI_TRAINING
+        robotsContent = ROBOTS_BLOCK_AI_TRAINING_ALLOW_ALL
         break
       case 'none':
         robotsContent = ROBOTS_ALLOW_ALL
