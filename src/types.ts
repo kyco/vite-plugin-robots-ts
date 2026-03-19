@@ -1,12 +1,5 @@
 export type Options = {
   /**
-   * Toggle the plugin on or off. Useful if you want to disable the plugin, e.g. in development mode.
-   *
-   * **Default: `true`**
-   */
-  enabled?: boolean
-
-  /**
    * Control how robots are blocked. When the `content` option is also provided, the `content` option will take precedence.
    *
    * **Default: `'all'`**

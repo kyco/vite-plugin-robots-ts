@@ -25,7 +25,6 @@ export function robots(options: Options = {}): Plugin {
   let config: ResolvedConfig
   let robotsContent = ''
 
-  const enabled = options.enabled ?? true
   const block = options.block ?? 'all'
   const content = options.content ?? undefined
   const sitemap = options.sitemap ?? ''
@@ -52,8 +51,6 @@ export function robots(options: Options = {}): Plugin {
 
   return {
     name: 'vite-plugin-robots-ts',
-
-    apply: () => enabled,
 
     configResolved(resolvedConfig) {
       config = resolvedConfig

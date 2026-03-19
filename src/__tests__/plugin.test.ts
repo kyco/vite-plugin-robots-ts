@@ -36,18 +36,6 @@ describe('+ robots()', () => {
   })
 
   describe('- options', () => {
-    describe('- `enabled`', () => {
-      it('should be `true` by default', () => {
-        const plugin = robots() as any
-        expect(plugin.apply()).toBe(true)
-      })
-
-      it('should be disabled when `enabled: false`', () => {
-        const plugin = robots({ enabled: false }) as any
-        expect(plugin.apply()).toBe(false)
-      })
-    })
-
     describe('- `block`', () => {
       it('should default to blocking all robots', () => {
         const plugin = getPlugin()
