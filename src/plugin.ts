@@ -12,8 +12,6 @@ import {
   logColor,
   logStart,
   logSuccess,
-  ROBOTS_ALLOW_ALL,
-  ROBOTS_BLOCK_AI_TRAINING_ALLOW_ALL,
   ROBOTS_BLOCK_ALL,
 } from './utils'
 
@@ -23,27 +21,9 @@ const ROBOTS_PATH = `${BASE_PATH}${FILE_NAME}`
 
 export function robots(options: Options = {}): Plugin {
   let config: ResolvedConfig
-  let robotsContent = ''
-
-  const block = options.block ?? 'all'
-  const content = options.content ?? undefined
+  let robotsContent = options.content ?? ROBOTS_BLOCK_ALL
   const sitemap = options.sitemap ?? ''
   const customOutDir = options.outDir ?? undefined
-
-  if (content) {
-    robotsContent = content
-  } else {
-    switch (block) {
-      case 'ai-training':
-        robotsContent = ROBOTS_BLOCK_AI_TRAINING_ALLOW_ALL
-        break
-      case 'none':
-        robotsContent = ROBOTS_ALLOW_ALL
-        break
-      default:
-        robotsContent = ROBOTS_BLOCK_ALL
-    }
-  }
 
   if (sitemap) {
     robotsContent += `\n\nSitemap: ${sitemap}`

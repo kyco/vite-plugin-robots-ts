@@ -3,6 +3,7 @@ import { resolve } from 'node:path'
 
 import { describe, expect, it, vi } from 'vitest'
 
+import type { Options } from '../types'
 import { robots } from '../plugin'
 import {
   ROBOTS_ALLOW_ALL,
@@ -23,7 +24,7 @@ const mockConfig = {
   logger: mockLogger,
 }
 
-const getPlugin = (options = {}) => {
+const getPlugin = (options: Options = {}) => {
   const plugin = robots(options) as any
   plugin.configResolved(mockConfig)
   return plugin
@@ -36,44 +37,6 @@ describe('+ robots()', () => {
   })
 
   describe('- options', () => {
-    describe('- `block`', () => {
-      it('should default to blocking all robots', () => {
-        const plugin = getPlugin()
-        const emitFile = vi.fn()
-        plugin.generateBundle.call({ emitFile })
-
-        expect(emitFile).toHaveBeenCalledWith({
-          type: 'asset',
-          fileName: 'robots.txt',
-          source: ROBOTS_BLOCK_ALL,
-        })
-      })
-
-      it('should allow all when `block: "none"`', () => {
-        const plugin = getPlugin({ block: 'none' })
-        const emitFile = vi.fn()
-        plugin.generateBundle.call({ emitFile })
-
-        expect(emitFile).toHaveBeenCalledWith({
-          type: 'asset',
-          fileName: 'robots.txt',
-          source: ROBOTS_ALLOW_ALL,
-        })
-      })
-
-      it('should block only AI crawlers when `block: "ai-training"`', () => {
-        const plugin = getPlugin({ block: 'ai-training' })
-        const emitFile = vi.fn()
-        plugin.generateBundle.call({ emitFile })
-
-        expect(emitFile).toHaveBeenCalledWith({
-          type: 'asset',
-          fileName: 'robots.txt',
-          source: ROBOTS_BLOCK_AI_TRAINING_ALLOW_ALL,
-        })
-      })
-    })
-
     describe('- `outDir`', () => {
       it('should write robots.txt to the custom outDir', () => {
         const plugin = getPlugin({ outDir: 'custom-out' })
@@ -132,15 +95,6 @@ describe('+ robots()', () => {
           source: custom,
         })
       })
-
-      it('should take precedence over `block` option', () => {
-        const custom = 'Sitemap: https://example.com/sitemap.xml\n'
-        const plugin = getPlugin({ block: 'none', content: custom })
-        const emitFile = vi.fn()
-        plugin.generateBundle.call({ emitFile })
-
-        expect(emitFile).toHaveBeenCalledWith(expect.objectContaining({ source: custom }))
-      })
     })
 
     describe('- `sitemap`', () => {
@@ -170,11 +124,11 @@ describe('+ robots()', () => {
       })
 
       it('should not append sitemap directive when sitemap is empty', () => {
-        const plugin = getPlugin({ block: 'none', sitemap: '' })
+        const plugin = getPlugin({ sitemap: '' })
         const emitFile = vi.fn()
         plugin.generateBundle.call({ emitFile })
 
-        expect(emitFile).toHaveBeenCalledWith(expect.objectContaining({ source: ROBOTS_ALLOW_ALL }))
+        expect(emitFile).toHaveBeenCalledWith(expect.objectContaining({ source: ROBOTS_BLOCK_ALL }))
       })
     })
   })
@@ -191,7 +145,7 @@ describe('+ robots()', () => {
     })
 
     it('should serve robots.txt with correct headers', () => {
-      const plugin = getPlugin({ block: 'none' })
+      const plugin = getPlugin()
       const use = vi.fn()
       plugin.configureServer({ middlewares: { use } })
 
@@ -200,7 +154,7 @@ describe('+ robots()', () => {
       handler({}, res)
 
       expect(res.setHeader).toHaveBeenCalledWith('Content-Type', 'text/plain; charset=utf-8')
-      expect(res.end).toHaveBeenCalledWith(ROBOTS_ALLOW_ALL)
+      expect(res.end).toHaveBeenCalledWith(ROBOTS_BLOCK_ALL)
     })
   })
 
