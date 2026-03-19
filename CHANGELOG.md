@@ -1,3 +1,14 @@
+## [2.0.2](https://github.com/kyco/vite-plugin-robots-ts/compare/v2.0.1...v2.0.2) (2026-03-19)
+
+### Bug Fixes
+
+* **demo:** Use constant for content ([de17cfa](https://github.com/kyco/vite-plugin-robots-ts/commit/de17cfa2f71a6c69e3da0a32445b0552f2007344))
+
+### Docs
+
+* Update comments ([d9b0e26](https://github.com/kyco/vite-plugin-robots-ts/commit/d9b0e2675478cb7c7ed01591a0689e4e206a5543))
+* Update README ([999bfc7](https://github.com/kyco/vite-plugin-robots-ts/commit/999bfc74e778969902caea9ec1e24eef702837a3))
+
 ## [2.0.1](https://github.com/kyco/vite-plugin-robots-ts/compare/v2.0.0...v2.0.1) (2026-03-19)
 
 ### Docs
