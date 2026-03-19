@@ -31,7 +31,9 @@ export default {
 
 ```ts
 robots()
+
 // or
+
 import { BLOCK_ALL, robots } from 'vite-plugin-robots-ts'
 
 robots({ content: BLOCK_ALL })
@@ -172,15 +174,37 @@ Disallow:
 Sitemap: https://example.com/sitemap.xml
 ```
 
+### Multiple sitemaps:
+
+```ts
+import { ALLOW_ALL, robots } from 'vite-plugin-robots-ts'
+
+robots({
+  content: ALLOW_ALL,
+  sitemap: [
+    'https://example.com/sitemap.xml',
+    'https://example.com/sitemap-news.xml',
+  ]
+})
+```
+*Output:*
+```txt
+User-agent: *
+Disallow:
+
+Sitemap: https://example.com/sitemap.xml
+Sitemap: https://example.com/sitemap-news.xml
+```
+
 ## Options
 
 All options are optional.
 
-| Option  | Type     | Default     | Description                                                                  |
-|---------|----------|-------------|------------------------------------------------------------------------------|
-| content | *string* | `BLOCK_ALL` | Custom content for `robots.txt`                                              |
-| sitemap | *string* | -           | Adds a `Sitemap` directive to `robots.txt`                                   |
-| outDir  | *string* | -           | Custom output directory for `robots.txt` (resolved relative to project root) |
+| Option  | Type                 | Default     | Description                                                                  |
+|---------|----------------------|-------------|------------------------------------------------------------------------------|
+| content | *string*             | `BLOCK_ALL` | Custom content for `robots.txt`                                              |
+| sitemap | *string \| string[]* | -           | Adds `Sitemap` directive(s) to `robots.txt`                                  |
+| outDir  | *string*             | -           | Custom output directory for `robots.txt` (resolved relative to project root) |
 
 ## Constants
 

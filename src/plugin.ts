@@ -15,10 +15,11 @@ export function robots(options: Options = {}): Plugin {
   let config: ResolvedConfig
   let robotsContent = options.content ?? BLOCK_ALL
   const sitemap = options.sitemap ?? ''
+  const sitemaps = Array.isArray(sitemap) ? sitemap : sitemap ? [sitemap] : []
   const customOutDir = options.outDir ?? undefined
 
-  if (sitemap) {
-    robotsContent += `\n\nSitemap: ${sitemap}`
+  if (sitemaps.length) {
+    robotsContent += `\n${sitemaps.map((isitemap) => `Sitemap: ${isitemap}`).join('\n')}`
   }
 
   return {

@@ -34,6 +34,14 @@ export type Options = {
    * robots({
    *   sitemap: 'https://example.com/sitemap.xml',
    * })
+   *
+   * // Or multiple sitemaps:
+   * robots({
+   *   sitemap: [
+   *     'https://example.com/sitemap.xml',
+   *     'https://example.com/sitemap-news.xml',
+   *   ],
+   * })
    * ```
    *
    * Output:
@@ -42,9 +50,10 @@ export type Options = {
    * Disallow: /
    *
    * Sitemap: https://example.com/sitemap.xml
+   * Sitemap: https://example.com/sitemap-news.xml
    * ```
    */
-  sitemap?: string
+  sitemap?: string | string[]
 
   /**
    * Custom output directory for the generated `robots.txt` file. When specified, the file is

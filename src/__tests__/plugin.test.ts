@@ -125,6 +125,28 @@ describe('+ robots()', () => {
 
         expect(emitFile).toHaveBeenCalledWith(expect.objectContaining({ source: BLOCK_ALL }))
       })
+
+      it('should append multiple sitemap directives when sitemap is an array', () => {
+        const plugin = getPlugin({
+          sitemap: ['https://example.com/sitemap.xml', 'https://example.com/sitemap-news.xml'],
+        })
+        const emitFile = vi.fn()
+        plugin.generateBundle.call({ emitFile })
+
+        expect(emitFile).toHaveBeenCalledWith(
+          expect.objectContaining({
+            source: `${BLOCK_ALL}\n\nSitemap: https://example.com/sitemap.xml\nSitemap: https://example.com/sitemap-news.xml`,
+          }),
+        )
+      })
+
+      it('should not append sitemap directive when sitemap is an empty array', () => {
+        const plugin = getPlugin({ sitemap: [] })
+        const emitFile = vi.fn()
+        plugin.generateBundle.call({ emitFile })
+
+        expect(emitFile).toHaveBeenCalledWith(expect.objectContaining({ source: BLOCK_ALL }))
+      })
     })
   })
 
