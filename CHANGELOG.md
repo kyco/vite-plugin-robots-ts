@@ -1,3 +1,9 @@
+## [2.1.1](https://github.com/kyco/vite-plugin-robots-ts/compare/v2.1.0...v2.1.1) (2026-03-19)
+
+### Bug Fixes
+
+* Remove "docs" from commit analyzer ([22c5458](https://github.com/kyco/vite-plugin-robots-ts/commit/22c54588a323747ac2376a05ce89452c4b6e16f3))
+
 ## [2.1.0](https://github.com/kyco/vite-plugin-robots-ts/compare/v2.0.3...v2.1.0) (2026-03-19)
 
 ### Features
