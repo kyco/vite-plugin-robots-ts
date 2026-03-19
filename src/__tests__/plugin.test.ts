@@ -100,7 +100,7 @@ describe('+ robots()', () => {
 
         expect(emitFile).toHaveBeenCalledWith(
           expect.objectContaining({
-            source: `${BLOCK_ALL}\n\nSitemap: https://example.com/sitemap.xml`,
+            source: `${BLOCK_ALL}\nSitemap: https://example.com/sitemap.xml`,
           }),
         )
       })
@@ -113,7 +113,7 @@ describe('+ robots()', () => {
 
         expect(emitFile).toHaveBeenCalledWith(
           expect.objectContaining({
-            source: `${custom}\n\nSitemap: https://example.com/sitemap.xml`,
+            source: `${custom}\nSitemap: https://example.com/sitemap.xml`,
           }),
         )
       })
@@ -135,7 +135,7 @@ describe('+ robots()', () => {
 
         expect(emitFile).toHaveBeenCalledWith(
           expect.objectContaining({
-            source: `${BLOCK_ALL}\n\nSitemap: https://example.com/sitemap.xml\nSitemap: https://example.com/sitemap-news.xml`,
+            source: `${BLOCK_ALL}\nSitemap: https://example.com/sitemap.xml\nSitemap: https://example.com/sitemap-news.xml`,
           }),
         )
       })
