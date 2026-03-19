@@ -32,7 +32,9 @@ export default {
 ```ts
 robots()
 // or
-robots({ block: 'all' })
+import { BLOCK_ALL, robots } from 'vite-plugin-robots-ts'
+
+robots({ content: BLOCK_ALL })
 ```
 *Output:*
 ```txt
@@ -43,7 +45,9 @@ Disallow: /
 ### Allow all:
 
 ```ts
-robots({ block: 'none' })
+import { ALLOW_ALL, robots } from 'vite-plugin-robots-ts'
+
+robots({ content: ALLOW_ALL })
 ```
 *Output:*
 ```txt
@@ -54,7 +58,9 @@ Disallow:
 ### Block only AI training crawlers (allow rest):
 
 ```ts
-robots({ block: 'ai-training' })
+import { BLOCK_AI_ALLOW_REST, robots } from 'vite-plugin-robots-ts'
+
+robots({ content: BLOCK_AI_ALLOW_REST })
 ```
 *Output:*
 ```txt
@@ -89,13 +95,13 @@ Disallow:
 ### Use built-in presets:
 
 ```ts
-import { ROBOTS_BLOCK_AI_TRAINING, ROBOTS_BLOCK_ALL, robots } from 'vite-plugin-robots-ts'
+import { BLOCK_AI, BLOCK_ALL, robots } from 'vite-plugin-robots-ts'
 
 robots({
   content:
     process.env.NODE_ENV === 'production'
-      ? `${ROBOTS_BLOCK_AI_TRAINING}\n<Custom content here>`
-      : ROBOTS_BLOCK_ALL,
+      ? `${BLOCK_AI}\n<Custom content here>`
+      : BLOCK_ALL,
 })
 ```
 *Output (production):*
@@ -151,8 +157,10 @@ Disallow: /secret
 ### Append sitemap directive:
 
 ```ts
+import { ALLOW_ALL, robots } from 'vite-plugin-robots-ts'
+
 robots({
-  block: 'none',
+  content: ALLOW_ALL,
   sitemap: 'https://example.com/sitemap.xml'
 })
 ```
@@ -168,32 +176,30 @@ Sitemap: https://example.com/sitemap.xml
 
 All options are optional.
 
-| Option  | Type                               | Default | Description                                                                  |
-|---------|------------------------------------|---------|------------------------------------------------------------------------------|
-| enabled | *boolean*                          | `true`  | Toggle the plugin on or off                                                  |
-| block   | `'all' \| 'ai-training' \| 'none'` | `'all'` | Control how robots are blocked                                               |
-| content | *string*                           | -       | Custom content for `robots.txt` (takes precedence over the **block** option) |
-| sitemap | *string*                           | -       | Adds a `Sitemap` directive to `robots.txt`                                   |
-| outDir  | *string*                           | -       | Custom output directory for `robots.txt` (resolved relative to project root) |
+| Option  | Type     | Default     | Description                                                                  |
+|---------|----------|-------------|------------------------------------------------------------------------------|
+| content | *string* | `BLOCK_ALL` | Custom content for `robots.txt`                                              |
+| sitemap | *string* | -           | Adds a `Sitemap` directive to `robots.txt`                                   |
+| outDir  | *string* | -           | Custom output directory for `robots.txt` (resolved relative to project root) |
 
 ## Constants
 
 The plugin exports preset constants that can be used with the `content` option or composed into custom configurations:
 
-| Constant                             | Description                                                   |
-|--------------------------------------|---------------------------------------------------------------|
-| `ROBOTS_ALLOW_ALL`                   | Allows all robots (`User-agent: * / Disallow:`)               |
-| `ROBOTS_BLOCK_ALL`                   | Blocks all robots (`User-agent: * / Disallow: /`)             |
-| `ROBOTS_BLOCK_AI_TRAINING`           | Blocks known AI training crawlers only                        |
-| `ROBOTS_BLOCK_AI_TRAINING_ALLOW_ALL` | Blocks known AI training crawlers and allows all other robots |
+| Constant              | Description                                                   |
+|-----------------------|---------------------------------------------------------------|
+| `ALLOW_ALL`           | Allows all robots (`User-agent: * / Disallow:`)               |
+| `BLOCK_ALL`           | Blocks all robots (`User-agent: * / Disallow: /`)             |
+| `BLOCK_AI`            | Blocks known AI training crawlers only                        |
+| `BLOCK_AI_ALLOW_REST` | Blocks known AI training crawlers and allows all other robots |
 
 ### Usage
 
 ```ts
 import {
-  ROBOTS_ALLOW_ALL,
-  ROBOTS_BLOCK_AI_TRAINING,
-  ROBOTS_BLOCK_AI_TRAINING_ALLOW_ALL,
-  ROBOTS_BLOCK_ALL,
+  ALLOW_ALL,
+  BLOCK_ALL,
+  BLOCK_AI,
+  BLOCK_AI_ALLOW_REST,
 } from 'vite-plugin-robots-ts'
 ```
