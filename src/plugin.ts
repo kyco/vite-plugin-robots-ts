@@ -4,16 +4,8 @@ import { join, resolve } from 'node:path'
 import type { Plugin, ResolvedConfig } from 'vite'
 
 import type { Options } from './types'
-import {
-  getErrorMsg,
-  LOGGER_CLEAR,
-  LOGGER_PREFIX,
-  LOGGER_SUCCESS,
-  logColor,
-  logStart,
-  logSuccess,
-  ROBOTS_BLOCK_ALL,
-} from './utils'
+import { BLOCK_ALL } from './content'
+import { getErrorMsg, LOGGER_CLEAR, LOGGER_PREFIX, LOGGER_SUCCESS, logColor, logStart, logSuccess } from './utils'
 
 const BASE_PATH = '/'
 const FILE_NAME = 'robots.txt'
@@ -21,7 +13,7 @@ const ROBOTS_PATH = `${BASE_PATH}${FILE_NAME}`
 
 export function robots(options: Options = {}): Plugin {
   let config: ResolvedConfig
-  let robotsContent = options.content ?? ROBOTS_BLOCK_ALL
+  let robotsContent = options.content ?? BLOCK_ALL
   const sitemap = options.sitemap ?? ''
   const customOutDir = options.outDir ?? undefined
 

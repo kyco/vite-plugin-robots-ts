@@ -1,8 +1,8 @@
 export type { Options } from './types'
-export * from './plugin'
 export {
-  ROBOTS_ALLOW_ALL,
-  ROBOTS_BLOCK_AI_TRAINING,
-  ROBOTS_BLOCK_AI_TRAINING_ALLOW_ALL,
-  ROBOTS_BLOCK_ALL,
-} from './utils'
+  ALLOW_ALL,
+  BLOCK_AI,
+  BLOCK_AI_ALLOW_REST,
+  BLOCK_ALL,
+} from './content'
+export * from './plugin'

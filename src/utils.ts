@@ -1,40 +1,5 @@
 import type { ResolvedConfig } from 'vite'
 
-export const ROBOTS_ALLOW_ALL = `User-agent: *
-Disallow:
-`
-
-export const ROBOTS_BLOCK_ALL = `User-agent: *
-Disallow: /
-`
-
-export const ROBOTS_BLOCK_AI_TRAINING = `User-agent: Amazonbot
-Disallow: /
-
-User-agent: Applebot-Extended
-Disallow: /
-
-User-agent: Bytespider
-Disallow: /
-
-User-agent: CCBot
-Disallow: /
-
-User-agent: ClaudeBot
-Disallow: /
-
-User-agent: Google-Extended
-Disallow: /
-
-User-agent: GPTBot
-Disallow: /
-
-User-agent: meta-externalagent
-Disallow: /
-`
-
-export const ROBOTS_BLOCK_AI_TRAINING_ALLOW_ALL = `${ROBOTS_BLOCK_AI_TRAINING}\n${ROBOTS_ALLOW_ALL}`
-
 export const logColor = (color: 'red' | 'green' | 'yellow', text: string, bold = false) => {
   const colorCode = {
     red: bold ? '\x1b[1;31m' : '\x1b[31m',
