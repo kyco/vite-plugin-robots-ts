@@ -1,20 +1,20 @@
 export type Options = {
   /**
-   * Custom content for the generated `robots.txt` file. This option always takes precedence over the `block` option.
+   * Custom content for the generated `robots.txt` file.
    *
-   * **Default: `undefined`**
+   * **Default: `BLOCK_ALL`**
    *
    * ---
    *
    * Example:
    * ```typescript
-   * import { ROBOTS_BLOCK_AI_TRAINING_ALLOW_ALL, ROBOTS_BLOCK_ALL, robots } from 'vite-plugin-robots-ts'
+   * import { BLOCK_AI_ALLOW_REST, BLOCK_ALL, robots } from 'vite-plugin-robots-ts'
    *
    * robots({
    *   content:
    *     process.env.NODE_ENV === 'production'
-   *       ? ROBOTS_BLOCK_AI_TRAINING_ALLOW_ALL
-   *       : ROBOTS_BLOCK_ALL,
+   *       ? BLOCK_AI_ALLOW_REST
+   *       : BLOCK_ALL,
    * })
    * ```
    */
@@ -29,8 +29,9 @@ export type Options = {
    *
    * Example:
    * ```typescript
+   * import { robots } from 'vite-plugin-robots-ts'
+   *
    * robots({
-   *   block: 'none',
    *   sitemap: 'https://example.com/sitemap.xml',
    * })
    * ```
@@ -38,7 +39,7 @@ export type Options = {
    * Output:
    * ```bash
    * User-agent: *
-   * Disallow:
+   * Disallow: /
    *
    * Sitemap: https://example.com/sitemap.xml
    * ```
