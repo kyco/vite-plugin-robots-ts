@@ -4,7 +4,7 @@ import { resolve } from 'node:path'
 import { describe, expect, it, vi } from 'vitest'
 
 import { robots } from '../plugin'
-import { ROBOTS_ALLOW_ALL, ROBOTS_BLOCK_AI_TRAINING, ROBOTS_BLOCK_ALL } from '../utils'
+import { ROBOTS_ALLOW_ALL, ROBOTS_BLOCK_AI_TRAINING_ALLOW_ALL, ROBOTS_BLOCK_ALL } from '../utils'
 
 vi.mock('node:fs', () => ({
   mkdirSync: vi.fn(),
@@ -76,7 +76,7 @@ describe('+ robots()', () => {
         expect(emitFile).toHaveBeenCalledWith({
           type: 'asset',
           fileName: 'robots.txt',
-          source: ROBOTS_BLOCK_AI_TRAINING,
+          source: ROBOTS_BLOCK_AI_TRAINING_ALLOW_ALL,
         })
       })
     })
@@ -88,8 +88,13 @@ describe('+ robots()', () => {
         plugin.generateBundle.call({ emitFile })
 
         expect(emitFile).not.toHaveBeenCalled()
-        expect(mkdirSync).toHaveBeenCalledWith(resolve('/project', 'custom-out'), { recursive: true })
-        expect(writeFileSync).toHaveBeenCalledWith(resolve('/project', 'custom-out', 'robots.txt'), ROBOTS_BLOCK_ALL)
+        expect(mkdirSync).toHaveBeenCalledWith(resolve('/project', 'custom-out'), {
+          recursive: true,
+        })
+        expect(writeFileSync).toHaveBeenCalledWith(
+          resolve('/project', 'custom-out', 'robots.txt'),
+          ROBOTS_BLOCK_ALL,
+        )
       })
 
       it('should resolve absolute outDir paths relative to project root', () => {
@@ -109,7 +114,10 @@ describe('+ robots()', () => {
         plugin.generateBundle.call({ emitFile })
 
         expect(emitFile).not.toHaveBeenCalled()
-        expect(writeFileSync).toHaveBeenCalledWith(resolve('/project', 'custom-out', 'robots.txt'), custom)
+        expect(writeFileSync).toHaveBeenCalledWith(
+          resolve('/project', 'custom-out', 'robots.txt'),
+          custom,
+        )
       })
 
       it('should throw when writing to custom outDir fails', () => {
@@ -120,7 +128,9 @@ describe('+ robots()', () => {
         const plugin = getPlugin({ outDir: 'custom-out' })
         const emitFile = vi.fn()
 
-        expect(() => plugin.generateBundle.call({ emitFile })).toThrow('Failed to write robots.txt!')
+        expect(() => plugin.generateBundle.call({ emitFile })).toThrow(
+          'Failed to write robots.txt!',
+        )
       })
     })
 

@@ -92,7 +92,10 @@ Disallow:
 import { ROBOTS_BLOCK_AI_TRAINING, ROBOTS_BLOCK_ALL, robots } from 'vite-plugin-robots-ts'
 
 robots({
-  content: process.env.NODE_ENV === 'production' ? ROBOTS_BLOCK_AI_TRAINING : ROBOTS_BLOCK_ALL,
+  content:
+    process.env.NODE_ENV === 'production'
+      ? `${ROBOTS_BLOCK_AI_TRAINING}\n<Custom content here>`
+      : ROBOTS_BLOCK_ALL,
 })
 ```
 *Output (production):*
@@ -121,8 +124,7 @@ Disallow: /
 User-agent: meta-externalagent
 Disallow: /
 
-User-agent: *
-Disallow:
+<Custom content here>
 ```
 *Output (all other environments):*
 ```txt (other)

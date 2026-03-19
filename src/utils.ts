@@ -31,10 +31,9 @@ Disallow: /
 
 User-agent: meta-externalagent
 Disallow: /
-
-User-agent: *
-Disallow:
 `
+
+export const ROBOTS_BLOCK_AI_TRAINING_ALLOW_ALL = `${ROBOTS_BLOCK_AI_TRAINING}\n${ROBOTS_ALLOW_ALL}`
 
 export const logColor = (color: 'red' | 'green' | 'yellow', text: string, bold = false) => {
   const colorCode = {
