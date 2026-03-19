@@ -1,3 +1,9 @@
+## [2.0.3](https://github.com/kyco/vite-plugin-robots-ts/compare/v2.0.2...v2.0.3) (2026-03-19)
+
+### Docs
+
+* Update CHANGELOG ([810fafa](https://github.com/kyco/vite-plugin-robots-ts/commit/810fafae9887725c0ccdba4c7c37fadd961e67b4))
+
 ## [2.0.2](https://github.com/kyco/vite-plugin-robots-ts/compare/v2.0.1...v2.0.2) (2026-03-19)
 
 ### Bug Fixes
@@ -19,9 +25,9 @@
 
 ### ⚠ BREAKING CHANGES
 
-* The `ROBOTS_BLOCK_AI_TRAINING` will now only block A…
-
-* Merge pull request [#15](https://github.com/kyco/vite-plugin-robots-ts/issues/15) from kyco/develop ([6b17b7e](https://github.com/kyco/vite-plugin-robots-ts/commit/6b17b7ecaf33aba0a304f73cd386b450ab1b0faa))
+* Refactored exported constants
+* Removed the `block` option
+* Removed the `enabled` option
 
 ### Bug Fixes
 
