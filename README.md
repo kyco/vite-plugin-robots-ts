@@ -51,7 +51,7 @@ User-agent: *
 Disallow:
 ```
 
-### Block only AI training crawlers:
+### Block only AI training crawlers (allow rest):
 
 ```ts
 robots({ block: 'ai-training' })
@@ -138,16 +138,14 @@ Disallow: /
 robots({
   content: `User-agent: *
 Disallow: /admin
-
-Sitemap: https://example.com/sitemap.xml`,
+Disallow: /secret`,
 })
 ```
 *Output:*
 ```txt
 User-agent: *
 Disallow: /admin
-
-Sitemap: https://example.com/sitemap.xml
+Disallow: /secret
 ```
 
 ### Append sitemap directive:
