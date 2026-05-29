@@ -25,6 +25,9 @@
           "level": "warn"
         }
       },
+      "nursery": {
+        "noShadow": "warn"
+      },
       "suspicious": {
         "noConsole": {
           "level": "warn",
@@ -46,11 +49,12 @@
               ":BLANK_LINE:",
               ":PACKAGE:",
               ":BLANK_LINE:",
-              ":ALIAS:",
-              ":BLANK_LINE:",
               {
                 "type": true
-              }
+              },
+              ":ALIAS:",
+              ":BLANK_LINE:",
+              ":PATH:"
             ]
           }
         }
