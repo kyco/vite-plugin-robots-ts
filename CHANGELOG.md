@@ -1,3 +1,11 @@
+## [2.1.3](https://github.com/kyco/vite-plugin-robots-ts/compare/v2.1.2...v2.1.3) (2026-05-29)
+
+### Chore
+
+* **dependencies:** bump pnpm/action-setup from 4 to 6 ([aafa468](https://github.com/kyco/vite-plugin-robots-ts/commit/aafa468ff78730d49a6b16cfd726fdd29355313d))
+* Lint ([e6f1f80](https://github.com/kyco/vite-plugin-robots-ts/commit/e6f1f8074d37307986a2ec1e6c3022853e60502d))
+* Update Biome config ([d0021cf](https://github.com/kyco/vite-plugin-robots-ts/commit/d0021cf2e24122d87a233373d3a4fa53b2ccc80d))
+
 ## [2.1.2](https://github.com/kyco/vite-plugin-robots-ts/compare/v2.1.1...v2.1.2) (2026-05-29)
 
 ### Chore
