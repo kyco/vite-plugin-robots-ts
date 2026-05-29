@@ -4,6 +4,7 @@ import { join, resolve } from 'node:path'
 import type { Plugin, ResolvedConfig } from 'vite'
 
 import type { Options } from './types'
+
 import { BLOCK_ALL } from './content'
 import { getErrorMsg, LOGGER_CLEAR, LOGGER_PREFIX, LOGGER_SUCCESS, logColor, logStart, logSuccess } from './utils'
 

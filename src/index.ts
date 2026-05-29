@@ -1,4 +1,5 @@
 export type { Options } from './types'
+
 export {
   ALLOW_ALL,
   BLOCK_AI,

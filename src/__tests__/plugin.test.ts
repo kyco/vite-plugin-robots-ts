@@ -4,6 +4,7 @@ import { resolve } from 'node:path'
 import { describe, expect, it, vi } from 'vitest'
 
 import type { Options } from '../types'
+
 import { ALLOW_ALL, BLOCK_AI, BLOCK_AI_ALLOW_REST, BLOCK_ALL } from '../content'
 import { robots } from '../plugin'
 
