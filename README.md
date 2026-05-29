@@ -30,9 +30,11 @@ export default {
 ### Block all (default):
 
 ```ts
+import { robots } from 'vite-plugin-robots-ts'
+
 robots()
 
-// or
+// OR
 
 import { BLOCK_ALL, robots } from 'vite-plugin-robots-ts'
 
