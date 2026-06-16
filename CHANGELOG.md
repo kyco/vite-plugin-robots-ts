@@ -1,3 +1,14 @@
+## [2.1.4](https://github.com/kyco/vite-plugin-robots-ts/compare/v2.1.3...v2.1.4) (2026-06-16)
+
+### Bug Fixes
+
+* Build ([eac5c97](https://github.com/kyco/vite-plugin-robots-ts/commit/eac5c971fef6e83d6ed91c99215eb9b8461cc2cd))
+* Revert includes config ([2261cb2](https://github.com/kyco/vite-plugin-robots-ts/commit/2261cb273d379aeb617abc0176b7fbb2963d3f67))
+
+### Chore
+
+* Bump deps and node version ([aad9079](https://github.com/kyco/vite-plugin-robots-ts/commit/aad9079a725e11d232d48e6a2b26e043c51220d7))
+
 ## [2.1.3](https://github.com/kyco/vite-plugin-robots-ts/compare/v2.1.2...v2.1.3) (2026-05-29)
 
 ### Chore
