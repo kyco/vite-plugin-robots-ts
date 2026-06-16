@@ -1,18 +1,7 @@
 {
   "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
   "files": {
-    "includes": [
-      "**",
-      "!**/_legacy",
-      "!**/.wrangler",
-      "!**/worker-configuration.d.ts",
-      "!**/node_modules",
-      "!**/dist",
-      "!**/project.inlang",
-      "!**/src/paraglide",
-      "!**/src/i18n/paraglide",
-      "!**/src/routeTree.gen.ts"
-    ]
+    "includes": ["**", "!**/node_modules", "!**/dist", "!**/routeTree.gen.ts"]
   },
   "formatter": {
     "indentStyle": "space",
