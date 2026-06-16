@@ -1,7 +1,18 @@
 {
   "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
   "files": {
-    "includes": ["**", "!**/node_modules", "!**/dist", "!**/routeTree.gen.ts"]
+    "includes": [
+      "**",
+      "!**/_legacy",
+      "!**/.wrangler",
+      "!**/worker-configuration.d.ts",
+      "!**/node_modules",
+      "!**/dist",
+      "!**/project.inlang",
+      "!**/src/paraglide",
+      "!**/src/i18n/paraglide",
+      "!**/src/routeTree.gen.ts"
+    ]
   },
   "formatter": {
     "indentStyle": "space",
@@ -18,17 +29,15 @@
   },
   "linter": {
     "rules": {
-      "recommended": true,
+      "preset": "recommended",
       "style": {
         "useConst": {
           "fix": "none",
           "level": "warn"
         }
       },
-      "nursery": {
-        "noShadow": "warn"
-      },
       "suspicious": {
+        "noShadow": "warn",
         "noConsole": {
           "level": "warn",
           "options": {

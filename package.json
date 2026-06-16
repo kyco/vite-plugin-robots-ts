@@ -57,23 +57,23 @@
     "demo:tanstack:build": "pnpm --filter tanstack build",
     "demo:tanstack:preview": "pnpm --filter tanstack preview",
     "clean": "rm -rf dist node_modules demo/*/dist demo/*/node_modules",
-    "update-packages": "pnpm dlx npm-check-updates --format group -i"
+    "update-packages": "pnpm dlx npm-check-updates --format group --cooldown 1 -i"
   },
-  "packageManager": "pnpm@10.32.1",
+  "packageManager": "pnpm@11.7.0",
   "peerDependencies": {
     "vite": ">=2"
   },
   "devDependencies": {
-    "@biomejs/biome": "^2.4.16",
+    "@biomejs/biome": "^2.5.0",
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
     "@semantic-release/github": "^12.0.8",
     "@semantic-release/npm": "^13.1.5",
     "conventional-changelog-conventionalcommits": "^9.3.1",
-    "semantic-release": "^25.0.3",
+    "semantic-release": "^25.0.5",
     "tsup": "^8.5.1",
-    "typescript": "^5.9.3",
-    "vite": "^8.0.14",
-    "vitest": "^4.1.7"
+    "typescript": "^6.0.3",
+    "vite": "^8.0.16",
+    "vitest": "^4.1.9"
   }
 }
