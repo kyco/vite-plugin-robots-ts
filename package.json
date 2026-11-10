@@ -64,18 +64,18 @@
     "vite": ">=2"
   },
   "devDependencies": {
-    "@biomejs/biome": "^2.6.6",
-    "@kyco-utils/biome-config": "^1.2.0",
-    "@semantic-release/changelog": "^7.0.0",
-    "@semantic-release/git": "^11.0.1",
-    "@semantic-release/github": "^12.0.10",
-    "@semantic-release/npm": "^13.2.0",
-    "@types/node": "^26.6.6",
-    "conventional-changelog-conventionalcommits": "^10.4.1",
-    "semantic-release": "^25.0.9",
-    "tsup": "^9.0.0",
-    "typescript": "^7.0.2",
-    "vite": "^8.3.7",
-    "vitest": "^5.1.0"
+    "@biomejs/biome": "2.6.6",
+    "@kyco-utils/biome-config": "1.2.0",
+    "@semantic-release/changelog": "7.0.0",
+    "@semantic-release/git": "11.0.1",
+    "@semantic-release/github": "12.0.10",
+    "@semantic-release/npm": "13.2.0",
+    "@types/node": "26.6.6",
+    "conventional-changelog-conventionalcommits": "10.4.1",
+    "semantic-release": "25.0.9",
+    "tsup": "9.0.0",
+    "typescript": "7.0.2",
+    "vite": "8.3.7",
+    "vitest": "5.1.0"
   }
 }
