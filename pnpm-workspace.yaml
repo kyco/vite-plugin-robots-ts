@@ -4,3 +4,8 @@ allowBuilds:
   esbuild: true
 minimumReleaseAgeExclude:
   - '@kyco-utils/*'
+permissions:
+  '@tanstack/react-router':
+    skills: false
+  '@tanstack/react-start':
+    skills: false
