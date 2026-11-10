@@ -1,3 +1,17 @@
+## [2.1.7](https://github.com/kyco/vite-plugin-robots-ts/compare/v2.1.6...v2.1.7) (2026-11-10)
+
+### Chore
+
+* add agents ([47d2fb3](https://github.com/kyco/vite-plugin-robots-ts/commit/47d2fb3bcb23c7f459e560594a5f0482283bc988))
+* bump deps ([b5620e0](https://github.com/kyco/vite-plugin-robots-ts/commit/b5620e07d4063997a19634527c4a0a60bdf49875))
+* bump nodejs ([1fa4c63](https://github.com/kyco/vite-plugin-robots-ts/commit/1fa4c6393e0d169ca7af7a479f4e30e43d59ea08))
+* deny ([7dbca38](https://github.com/kyco/vite-plugin-robots-ts/commit/7dbca380b694f319cc0b432ef040f28e1d5cd4ef))
+* **dependencies:** bump actions/setup-node from 6 to 7 ([5f217bc](https://github.com/kyco/vite-plugin-robots-ts/commit/5f217bc4e7c929f410c367ecb3328c13393e73a4))
+* downgrade ([b2673a2](https://github.com/kyco/vite-plugin-robots-ts/commit/b2673a274e970e278bd99bfdb195fab28c657ed7))
+* downgrade TS ([155061b](https://github.com/kyco/vite-plugin-robots-ts/commit/155061b9fcea51f8c1c47a15f92c9f0ff497dba2))
+* lint ([a92d10c](https://github.com/kyco/vite-plugin-robots-ts/commit/a92d10c3b836425ee38072c10c87039aa7404ec8))
+* pin versions ([837dbd1](https://github.com/kyco/vite-plugin-robots-ts/commit/837dbd10b4eb4803ae03702c0997090294ba22e2))
+
 ## [2.1.6](https://github.com/kyco/vite-plugin-robots-ts/compare/v2.1.5...v2.1.6) (2026-07-06)
 
 ## [2.1.5](https://github.com/kyco/vite-plugin-robots-ts/compare/v2.1.4...v2.1.5) (2026-07-06)
