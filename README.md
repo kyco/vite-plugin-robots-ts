@@ -40,7 +40,8 @@ import { BLOCK_ALL, robots } from 'vite-plugin-robots-ts'
 
 robots({ content: BLOCK_ALL })
 ```
-*Output:*
+_Output:_
+
 ```txt
 User-agent: *
 Disallow: /
@@ -53,7 +54,8 @@ import { ALLOW_ALL, robots } from 'vite-plugin-robots-ts'
 
 robots({ content: ALLOW_ALL })
 ```
-*Output:*
+_Output:_
+
 ```txt
 User-agent: *
 Disallow:
@@ -66,7 +68,8 @@ import { BLOCK_AI_ALLOW_REST, robots } from 'vite-plugin-robots-ts'
 
 robots({ content: BLOCK_AI_ALLOW_REST })
 ```
-*Output:*
+_Output:_
+
 ```txt
 User-agent: Amazonbot
 Disallow: /
@@ -102,13 +105,11 @@ Disallow:
 import { BLOCK_AI, BLOCK_ALL, robots } from 'vite-plugin-robots-ts'
 
 robots({
-  content:
-    process.env.NODE_ENV === 'production'
-      ? `${BLOCK_AI}\n<Custom content here>`
-      : BLOCK_ALL,
+  content: process.env.NODE_ENV === 'production' ? `${BLOCK_AI}\n<Custom content here>` : BLOCK_ALL,
 })
 ```
-*Output (production):*
+_Output (production):_
+
 ```txt (production)
 User-agent: Amazonbot
 Disallow: /
@@ -136,7 +137,8 @@ Disallow: /
 
 <Custom content here>
 ```
-*Output (all other environments):*
+_Output (all other environments):_
+
 ```txt (other)
 User-agent: *
 Disallow: /
@@ -151,7 +153,8 @@ Disallow: /admin
 Disallow: /secret`,
 })
 ```
-*Output:*
+_Output:_
+
 ```txt
 User-agent: *
 Disallow: /admin
@@ -165,10 +168,11 @@ import { ALLOW_ALL, robots } from 'vite-plugin-robots-ts'
 
 robots({
   content: ALLOW_ALL,
-  sitemap: 'https://example.com/sitemap.xml'
+  sitemap: 'https://example.com/sitemap.xml',
 })
 ```
-*Output:*
+_Output:_
+
 ```txt
 User-agent: *
 Disallow:
@@ -183,13 +187,11 @@ import { ALLOW_ALL, robots } from 'vite-plugin-robots-ts'
 
 robots({
   content: ALLOW_ALL,
-  sitemap: [
-    'https://example.com/sitemap.xml',
-    'https://example.com/sitemap-news.xml',
-  ]
+  sitemap: ['https://example.com/sitemap.xml', 'https://example.com/sitemap-news.xml'],
 })
 ```
-*Output:*
+_Output:_
+
 ```txt
 User-agent: *
 Disallow:
@@ -203,17 +205,17 @@ Sitemap: https://example.com/sitemap-news.xml
 All options are optional.
 
 | Option  | Type                 | Default     | Description                                                                  |
-|---------|----------------------|-------------|------------------------------------------------------------------------------|
-| content | *string*             | `BLOCK_ALL` | Custom content for `robots.txt`                                              |
-| sitemap | *string \| string[]* | -           | Adds `Sitemap` directive(s) to `robots.txt`                                  |
-| outDir  | *string*             | -           | Custom output directory for `robots.txt` (resolved relative to project root) |
+| ------- | -------------------- | ----------- | ---------------------------------------------------------------------------- |
+| content | _string_             | `BLOCK_ALL` | Custom content for `robots.txt`                                              |
+| sitemap | _string \| string[]_ | -           | Adds `Sitemap` directive(s) to `robots.txt`                                  |
+| outDir  | _string_             | -           | Custom output directory for `robots.txt` (resolved relative to project root) |
 
 ## Constants
 
 The plugin exports preset constants that can be used with the `content` option or composed into custom configurations:
 
 | Constant              | Description                                                   |
-|-----------------------|---------------------------------------------------------------|
+| --------------------- | ------------------------------------------------------------- |
 | `ALLOW_ALL`           | Allows all robots (`User-agent: * / Disallow:`)               |
 | `BLOCK_ALL`           | Blocks all robots (`User-agent: * / Disallow: /`)             |
 | `BLOCK_AI`            | Blocks known AI training crawlers only                        |
@@ -222,10 +224,5 @@ The plugin exports preset constants that can be used with the `content` option o
 ### Usage
 
 ```ts
-import {
-  ALLOW_ALL,
-  BLOCK_ALL,
-  BLOCK_AI,
-  BLOCK_AI_ALLOW_REST,
-} from 'vite-plugin-robots-ts'
+import { ALLOW_ALL, BLOCK_ALL, BLOCK_AI, BLOCK_AI_ALLOW_REST } from 'vite-plugin-robots-ts'
 ```
